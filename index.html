@@ -926,13 +926,32 @@ body{font-family:'Sarabun',sans-serif;background:#eef2f7;color:#1a1a2e;min-heigh
     <div class="fc">
       <div class="fc-head" style="background:#2d4a6b;color:#fff">✍️ ลายเซ็น</div>
       <div class="fc-body">
-        <div style="font-size:.75rem;color:#666;margin-bottom:8px">อัปโหลดลายเซ็น PNG / JPG</div>
-        <div class="sig-area">
-          <input type="file" id="sigFile" accept="image/png,image/jpeg" onchange="handleSig(this)">
-          <div id="sigPh"><div style="font-size:1.4rem;opacity:.4">✍️</div><div style="font-size:.72rem;color:#8a96a3"><strong style="color:#c0515a">คลิก</strong> อัปโหลดลายเซ็น</div></div>
-          <img id="sigImg" class="sig-img" style="display:none">
+        <div style="display:flex;gap:6px;margin-bottom:10px">
+          <button id="sigTabDraw" onclick="switchSigTab('draw')" style="flex:1;padding:6px 10px;border-radius:6px;border:1.5px solid #4a90d9;background:#e8f4fd;color:#1a5a8a;font-family:Sarabun,sans-serif;font-size:.72rem;font-weight:700;cursor:pointer">วาดลายเซ็น</button>
+          <button id="sigTabUpload" onclick="switchSigTab('upload')" style="flex:1;padding:6px 10px;border-radius:6px;border:1.5px solid #dde3ea;background:#fff;color:#8a96a3;font-family:Sarabun,sans-serif;font-size:.72rem;font-weight:700;cursor:pointer">อัปโหลดรูป</button>
         </div>
-        <button id="sigClear" style="display:none;margin-top:6px;background:none;border:1px solid #ddd;border-radius:6px;padding:5px 12px;font-family:Sarabun,sans-serif;font-size:.72rem;color:#888;cursor:pointer" onclick="clearSig()">✕ ลบลายเซ็น</button>
+        <div id="sigDrawPanel">
+          <div style="border:1.5px solid #dde3ea;border-radius:7px;background:#fff;position:relative;overflow:hidden">
+            <canvas id="sigCanvas" height="120" style="display:block;touch-action:none;cursor:crosshair;width:100%"></canvas>
+            <div id="sigCanvasHint" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:.75rem;color:#c0cad4;pointer-events:none">เซ็นชื่อที่นี่</div>
+          </div>
+          <div style="display:flex;gap:6px;margin-top:6px">
+            <button onclick="clearDrawSig()" style="flex:1;background:none;border:1px solid #ddd;border-radius:6px;padding:5px 10px;font-family:Sarabun,sans-serif;font-size:.72rem;color:#888;cursor:pointer">ล้าง</button>
+            <button onclick="useDrawSig()" style="flex:2;background:#2d4a6b;border:none;border-radius:6px;padding:5px 10px;font-family:Sarabun,sans-serif;font-size:.72rem;color:#fff;cursor:pointer;font-weight:700">ใช้ลายเซ็นนี้</button>
+          </div>
+        </div>
+        <div id="sigUploadPanel" style="display:none">
+          <div class="sig-area">
+            <input type="file" id="sigFile" accept="image/png,image/jpeg" onchange="handleSig(this)">
+            <div id="sigPh"><div style="font-size:1.4rem;opacity:.4">+</div><div style="font-size:.72rem;color:#8a96a3"><strong style="color:#c0515a">คลิก</strong> อัปโหลดลายเซ็น</div></div>
+            <img id="sigImg" class="sig-img" style="display:none">
+          </div>
+        </div>
+        <div id="sigPreviewWrap" style="display:none;margin-top:8px;background:#f4f7fa;border-radius:6px;padding:8px;text-align:center">
+          <div style="font-size:.65rem;color:#8a96a3;margin-bottom:4px">ลายเซ็นที่ใช้</div>
+          <img id="sigPreviewImg" style="max-height:50px;max-width:100%">
+          <button onclick="clearAllSig()" style="display:block;margin:6px auto 0;background:none;border:1px solid #ddd;border-radius:6px;padding:4px 12px;font-family:Sarabun,sans-serif;font-size:.7rem;color:#888;cursor:pointer">✕ ลบลายเซ็น</button>
+        </div>
       </div>
     </div>
   </div>
@@ -1568,27 +1587,87 @@ async function exportPDF(){
   finally{ov.classList.remove('show');}
 }
 
+// ── Signature pad ──
+var _sigDrawing = false;
+var _sigHasDraw = false;
+var _sigCanvas, _sigCtx;
+
+function initSigCanvas() {
+  _sigCanvas = document.getElementById('sigCanvas');
+  if (!_sigCanvas) return;
+  _sigCanvas.width = _sigCanvas.parentElement.clientWidth || 240;
+  _sigCtx = _sigCanvas.getContext('2d');
+  _sigCtx.strokeStyle = '#1a1a2e';
+  _sigCtx.lineWidth = 2;
+  _sigCtx.lineCap = 'round';
+  _sigCtx.lineJoin = 'round';
+
+  function getPos(e) {
+    var r = _sigCanvas.getBoundingClientRect();
+    var src = e.touches ? e.touches[0] : e;
+    return { x: (src.clientX - r.left) * (_sigCanvas.width / r.width), y: (src.clientY - r.top) * (_sigCanvas.height / r.height) };
+  }
+  _sigCanvas.addEventListener('mousedown', function(e){ _sigDrawing=true; var p=getPos(e); _sigCtx.beginPath(); _sigCtx.moveTo(p.x,p.y); });
+  _sigCanvas.addEventListener('mousemove', function(e){ if(!_sigDrawing) return; var p=getPos(e); _sigCtx.lineTo(p.x,p.y); _sigCtx.stroke(); _sigHasDraw=true; document.getElementById('sigCanvasHint').style.display='none'; });
+  _sigCanvas.addEventListener('mouseup', function(){ _sigDrawing=false; });
+  _sigCanvas.addEventListener('mouseleave', function(){ _sigDrawing=false; });
+  _sigCanvas.addEventListener('touchstart', function(e){ e.preventDefault(); _sigDrawing=true; var p=getPos(e); _sigCtx.beginPath(); _sigCtx.moveTo(p.x,p.y); },{passive:false});
+  _sigCanvas.addEventListener('touchmove', function(e){ e.preventDefault(); if(!_sigDrawing) return; var p=getPos(e); _sigCtx.lineTo(p.x,p.y); _sigCtx.stroke(); _sigHasDraw=true; document.getElementById('sigCanvasHint').style.display='none'; },{passive:false});
+  _sigCanvas.addEventListener('touchend', function(){ _sigDrawing=false; });
+}
+
+function switchSigTab(tab) {
+  var isDraw = tab === 'draw';
+  document.getElementById('sigDrawPanel').style.display = isDraw ? 'block' : 'none';
+  document.getElementById('sigUploadPanel').style.display = isDraw ? 'none' : 'block';
+  document.getElementById('sigTabDraw').style.cssText = isDraw
+    ? 'flex:1;padding:6px 10px;border-radius:6px;border:1.5px solid #4a90d9;background:#e8f4fd;color:#1a5a8a;font-family:Sarabun,sans-serif;font-size:.72rem;font-weight:700;cursor:pointer'
+    : 'flex:1;padding:6px 10px;border-radius:6px;border:1.5px solid #dde3ea;background:#fff;color:#8a96a3;font-family:Sarabun,sans-serif;font-size:.72rem;font-weight:700;cursor:pointer';
+  document.getElementById('sigTabUpload').style.cssText = isDraw
+    ? 'flex:1;padding:6px 10px;border-radius:6px;border:1.5px solid #dde3ea;background:#fff;color:#8a96a3;font-family:Sarabun,sans-serif;font-size:.72rem;font-weight:700;cursor:pointer'
+    : 'flex:1;padding:6px 10px;border-radius:6px;border:1.5px solid #4a90d9;background:#e8f4fd;color:#1a5a8a;font-family:Sarabun,sans-serif;font-size:.72rem;font-weight:700;cursor:pointer';
+  if (isDraw) setTimeout(initSigCanvas, 50);
+}
+
+function clearDrawSig() {
+  if (_sigCtx) _sigCtx.clearRect(0,0,_sigCanvas.width,_sigCanvas.height);
+  _sigHasDraw = false;
+  document.getElementById('sigCanvasHint').style.display = 'flex';
+}
+
+function useDrawSig() {
+  if (!_sigHasDraw) { alert('กรุณาเซ็นชื่อก่อนค่ะ'); return; }
+  var dataUrl = _sigCanvas.toDataURL('image/png');
+  _applySig(dataUrl);
+}
+
 function handleSig(input) {
   if (!input.files[0]) return;
   var r = new FileReader();
-  r.onload = function(e) {
-    sigData = e.target.result;
-    document.getElementById('sigImg').src = sigData;
-    document.getElementById('sigImg').style.display = 'block';
-    document.getElementById('sigPh').style.display = 'none';
-    document.getElementById('sigClear').style.display = 'block';
-    renderInvoice();
-  };
+  r.onload = function(e) { _applySig(e.target.result); };
   r.readAsDataURL(input.files[0]);
 }
-function clearSig() {
+
+function _applySig(dataUrl) {
+  sigData = dataUrl;
+  document.getElementById('sigImg').src = dataUrl;
+  document.getElementById('sigImg').style.display = 'block';
+  document.getElementById('sigPh').style.display = 'none';
+  document.getElementById('sigPreviewImg').src = dataUrl;
+  document.getElementById('sigPreviewWrap').style.display = 'block';
+  renderInvoice();
+}
+
+function clearAllSig() {
   sigData = null;
   document.getElementById('sigImg').style.display = 'none';
   document.getElementById('sigPh').style.display = 'flex';
-  document.getElementById('sigClear').style.display = 'none';
   document.getElementById('sigFile').value = '';
+  document.getElementById('sigPreviewWrap').style.display = 'none';
+  clearDrawSig();
   renderInvoice();
 }
+function clearSig() { clearAllSig(); }
 function handleFiles(input, key) {
   for (var i = 0; i < input.files.length; i++) {
     (function(f) {
@@ -1726,7 +1805,7 @@ function goToStep(n) {
     }; })(t.id);
     g.appendChild(b);
   });
-  addRow(); addRow();
+  addRow(); addRow(); setTimeout(initSigCanvas, 300);
   calcTotal();
   renderInvoice();
 })();
