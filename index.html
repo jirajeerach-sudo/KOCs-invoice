@@ -31,7 +31,7 @@ body{font-family:'Sarabun',sans-serif;background:#fff;min-height:100vh;display:f
   <div class="tagline">Invoice &amp; Quotation System</div>
 </div>
 <div class="cards">
-  <a class="card" href="#" onclick="openLang('index-th.html');return false;">
+  <a class="card" href="#" onclick="return goLang('index-th.html',this,event)">
     <div class="flag">🇹🇭</div>
     <div class="info">
       <div class="lang">ภาษาไทย</div>
@@ -39,7 +39,7 @@ body{font-family:'Sarabun',sans-serif;background:#fff;min-height:100vh;display:f
     </div>
     <div class="arrow">→</div>
   </a>
-  <a class="card" href="#" onclick="openLang('index-en.html');return false;">
+  <a class="card" href="#" onclick="return goLang('index-en.html',this,event)">
     <div class="flag">🇬🇧</div>
     <div class="info">
       <div class="lang">English</div>
@@ -47,7 +47,7 @@ body{font-family:'Sarabun',sans-serif;background:#fff;min-height:100vh;display:f
     </div>
     <div class="arrow">→</div>
   </a>
-  <a class="card" href="#" onclick="openLang('index-zh.html');return false;">
+  <a class="card" href="#" onclick="return goLang('index-zh.html',this,event)">
     <div class="flag">🇨🇳</div>
     <div class="info">
       <div class="lang">中文</div>
@@ -57,22 +57,66 @@ body{font-family:'Sarabun',sans-serif;background:#fff;min-height:100vh;display:f
   </a>
 </div>
 <div class="footer">KONVY INTERNATIONAL &middot; KOL SYSTEM</div>
+
 <script>
 var ua = navigator.userAgent;
+var isLine = /Line\//.test(ua);
 var isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
 var isAndroid = /Android/.test(ua);
-var isInApp = /Line|FBAN|FBAV|Instagram|MicroMessenger|DingTalk|TikTok|WeChat/i.test(ua);
-var BASE = 'https://jirajeerach-sudo.github.io/KOCs-invoice/';
+var isCopyOnly = /DingTalk|MicroMessenger/.test(ua);
+var baseUrl = 'https://jirajeerach-sudo.github.io/KOCs-invoice/';
 
-function openLang(page) {
-  var url = BASE + page;
-  if (isAndroid && isInApp) {
-    window.location.href = 'intent://' + url.replace(/^https?:\/\//, '') + '#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=' + encodeURIComponent(url) + ';end';
-  } else if (isIOS && isInApp) {
-    window.location.href = url.replace('https://', 'x-safari-https://');
-    setTimeout(function(){ window.location.href = url; }, 1000);
+function goLang(path, el, e) {
+  e = e || window.event;
+  if (e && e.preventDefault) e.preventDefault();
+  if (e && e.returnValue !== undefined) e.returnValue = false;
+  var url = baseUrl + path;
+  if (isCopyOnly) {
+    showCopyUI(url);
   } else {
-    window.location.href = url;
+    setTimeout(function() {
+      if (isAndroid && isLine) {
+        window.location.href = 'intent://' + url.replace(/^https?:\/\//, '') +
+          '#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=' + encodeURIComponent(url) + ';end';
+      } else if (isIOS && isLine) {
+        window.location.href = url.replace('https://', 'x-safari-https://');
+        setTimeout(function() { window.location.href = url; }, 1000);
+      } else {
+        window.location.href = url;
+      }
+    }, 200);
+  }
+  return false;
+}
+
+function showCopyUI(url) {
+  var overlay = document.createElement('div');
+  overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px';
+  overlay.innerHTML =
+    '<div style="background:#fff;border-radius:16px;padding:24px;width:100%;max-width:340px;text-align:center;font-family:Sarabun,sans-serif">' +
+    '<div style="font-size:1.8rem;margin-bottom:8px">📋</div>' +
+    '<div style="font-weight:700;font-size:1rem;margin-bottom:4px;color:#1a1a2e">กรุณาคัดลอกลิงก์นี้</div>' +
+    '<div style="font-size:.75rem;color:#888;margin-bottom:14px">แล้วเปิดใน Browser ภายนอกค่ะ<br><span style="color:#f73174">Please copy & open in external browser</span></div>' +
+    '<div style="background:#f5f6fa;border-radius:8px;padding:10px 12px;font-size:.72rem;color:#555;word-break:break-all;margin-bottom:14px;text-align:left">' + url + '</div>' +
+    '<button onclick="copyUrl(\'' + url + '\')" style="width:100%;background:#f73174;color:#fff;border:none;border-radius:10px;padding:12px;font-family:Sarabun,sans-serif;font-size:.9rem;font-weight:700;cursor:pointer;margin-bottom:8px" id="copyBtn">📋 คัดลอกลิงก์</button>' +
+    '<button onclick="this.parentElement.parentElement.remove()" style="width:100%;background:none;border:1px solid #ddd;border-radius:10px;padding:10px;font-family:Sarabun,sans-serif;font-size:.85rem;color:#888;cursor:pointer">ปิด</button>' +
+    '</div>';
+  document.body.appendChild(overlay);
+}
+
+function copyUrl(url) {
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(url).then(function() {
+      var btn = document.getElementById('copyBtn');
+      if (btn) { btn.textContent = '✅ คัดลอกแล้ว!'; btn.style.background = '#2dd393'; }
+    });
+  } else {
+    var ta = document.createElement('textarea');
+    ta.value = url; document.body.appendChild(ta);
+    ta.select(); document.execCommand('copy');
+    document.body.removeChild(ta);
+    var btn = document.getElementById('copyBtn');
+    if (btn) { btn.textContent = '✅ คัดลอกแล้ว!'; btn.style.background = '#2dd393'; }
   }
 }
 </script>
