@@ -8,34 +8,30 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Sarabun',sans-serif;background:#fff;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 20px}
-.hero{text-align:center;margin-bottom:48px}
+.hero{text-align:center;margin-bottom:40px}
 .logo{font-size:2.4rem;margin-bottom:6px}
 .brand{font-size:1.6rem;font-weight:700;color:#1a1a2e}
 .brand span{color:#f73174}
 .tagline{font-size:.9rem;color:#9ca3af;margin-top:6px}
-.cards{display:flex;flex-direction:column;gap:12px;width:100%;max-width:380px}
-.card{display:flex;align-items:center;gap:16px;padding:18px 22px;border:1.5px solid #f0f0f5;border-radius:16px;text-decoration:none;background:#fff;transition:all .2s}
-.card:hover{border-color:#f73174;background:#fff5f8;transform:translateY(-2px);box-shadow:0 8px 24px rgba(247,49,116,.1)}
+.cards{display:flex;flex-direction:column;gap:10px;width:100%;max-width:380px}
+.card{display:flex;align-items:center;gap:16px;padding:18px 22px;border:1.5px solid #f0f0f5;border-radius:16px;text-decoration:none;background:#fff;transition:border-color .2s,background .2s;cursor:pointer}
+.card:hover,.card:active{border-color:#f73174;background:#fff5f8}
 .flag{font-size:1.8rem;width:40px;text-align:center;flex-shrink:0}
 .info{flex:1}
 .lang{font-size:1rem;font-weight:700;color:#1a1a2e}
 .desc{font-size:.75rem;color:#9ca3af;margin-top:3px}
-.arrow{color:#f73174;font-size:1rem;opacity:0;transition:opacity .18s}
-.card:hover .arrow{opacity:1}
-.footer{margin-top:48px;text-align:center;font-size:.72rem;color:#d1d5db}
-.dot{display:inline-block;width:4px;height:4px;background:#f73174;border-radius:50%;margin:0 8px;vertical-align:middle}
+.arrow{color:#f73174;font-size:1rem}
+.footer{margin-top:40px;text-align:center;font-size:.7rem;color:#d1d5db}
 </style>
 </head>
 <body>
-
 <div class="hero">
   <div class="logo">🧾</div>
   <div class="brand">KONVY <span>KOL</span></div>
   <div class="tagline">Invoice &amp; Quotation System</div>
 </div>
-
 <div class="cards">
-  <a class="card" href="index-th.html">
+  <a class="card" href="#" onclick="openLang('index-th.html');return false;">
     <div class="flag">🇹🇭</div>
     <div class="info">
       <div class="lang">ภาษาไทย</div>
@@ -43,8 +39,7 @@ body{font-family:'Sarabun',sans-serif;background:#fff;min-height:100vh;display:f
     </div>
     <div class="arrow">→</div>
   </a>
-
-  <a class="card" href="index-en.html">
+  <a class="card" href="#" onclick="openLang('index-en.html');return false;">
     <div class="flag">🇬🇧</div>
     <div class="info">
       <div class="lang">English</div>
@@ -52,8 +47,7 @@ body{font-family:'Sarabun',sans-serif;background:#fff;min-height:100vh;display:f
     </div>
     <div class="arrow">→</div>
   </a>
-
-  <a class="card" href="index-zh.html">
+  <a class="card" href="#" onclick="openLang('index-zh.html');return false;">
     <div class="flag">🇨🇳</div>
     <div class="info">
       <div class="lang">中文</div>
@@ -62,10 +56,24 @@ body{font-family:'Sarabun',sans-serif;background:#fff;min-height:100vh;display:f
     <div class="arrow">→</div>
   </a>
 </div>
-
-<div class="footer">
-  KONVY INTERNATIONAL<span class="dot"></span>KOL SYSTEM
-</div>
-
+<div class="footer">KONVY INTERNATIONAL &middot; KOL SYSTEM</div>
+<script>
+var ua=navigator.userAgent;
+var isIOS=/iPad|iPhone|iPod/.test(ua)&&!window.MSStream;
+var isAndroid=/Android/.test(ua);
+var isInApp=/Line|FBAN|FBAV|Instagram|MicroMessenger|DingTalk|TikTok|WeChat/i.test(ua);
+var BASE='https://jirajeerach-sudo.github.io/KOLs-invoice/';
+function openLang(page){
+  var url=BASE+page;
+  if(isAndroid&&isInApp){
+    window.location.href='intent://'+url.replace(/^https?:\/\//,'')+'#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url='+encodeURIComponent(url)+';end';
+  } else if(isIOS&&isInApp){
+    window.location.href=url.replace('https://','x-safari-https://');
+    setTimeout(function(){window.location.href=url;},1000);
+  } else {
+    window.location.href=url;
+  }
+}
+</script>
 </body>
 </html>
