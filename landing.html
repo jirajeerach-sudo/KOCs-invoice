@@ -4,68 +4,68 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>KONVY KOL — Invoice System</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Sarabun',sans-serif;background:#fff;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px}
-.logo-wrap{text-align:center;margin-bottom:40px}
-.logo-icon{font-size:2.8rem;margin-bottom:10px}
-.logo-name{font-size:1.5rem;font-weight:700;color:#1a1a2e;letter-spacing:.02em}
-.logo-sub{font-size:.85rem;color:#8a96a3;margin-top:4px}
-.cards{display:flex;flex-direction:column;gap:14px;width:100%;max-width:360px}
-.lang-card{display:flex;align-items:center;gap:16px;padding:18px 20px;border:1.5px solid #e8ecf2;border-radius:14px;text-decoration:none;background:#fff;transition:all .18s;cursor:pointer}
-.lang-card:hover{border-color:#f73174;background:#fff8fb;transform:translateY(-2px);box-shadow:0 4px 16px rgba(247,49,116,.12)}
-.lang-flag{font-size:2rem;width:44px;text-align:center;flex-shrink:0}
-.lang-info{}
-.lang-title{font-size:1rem;font-weight:700;color:#1a1a2e}
-.lang-desc{font-size:.78rem;color:#8a96a3;margin-top:2px}
-.lang-arrow{margin-left:auto;color:#f73174;font-size:1.2rem;opacity:0;transition:opacity .18s}
-.lang-card:hover .lang-arrow{opacity:1}
-.footer{margin-top:40px;font-size:.72rem;color:#b0bac8;text-align:center}
-.pink-dot{display:inline-block;width:6px;height:6px;background:#f73174;border-radius:50%;margin:0 6px;vertical-align:middle}
+body{font-family:'Sarabun',sans-serif;background:#fff;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 20px}
+.hero{text-align:center;margin-bottom:48px}
+.logo{font-size:2.4rem;margin-bottom:6px}
+.brand{font-size:1.6rem;font-weight:700;color:#1a1a2e}
+.brand span{color:#f73174}
+.tagline{font-size:.9rem;color:#9ca3af;margin-top:6px}
+.cards{display:flex;flex-direction:column;gap:12px;width:100%;max-width:380px}
+.card{display:flex;align-items:center;gap:16px;padding:18px 22px;border:1.5px solid #f0f0f5;border-radius:16px;text-decoration:none;background:#fff;transition:all .2s}
+.card:hover{border-color:#f73174;background:#fff5f8;transform:translateY(-2px);box-shadow:0 8px 24px rgba(247,49,116,.1)}
+.flag{font-size:1.8rem;width:40px;text-align:center;flex-shrink:0}
+.info{flex:1}
+.lang{font-size:1rem;font-weight:700;color:#1a1a2e}
+.desc{font-size:.75rem;color:#9ca3af;margin-top:3px}
+.arrow{color:#f73174;font-size:1rem;opacity:0;transition:opacity .18s}
+.card:hover .arrow{opacity:1}
+.footer{margin-top:48px;text-align:center;font-size:.72rem;color:#d1d5db}
+.dot{display:inline-block;width:4px;height:4px;background:#f73174;border-radius:50%;margin:0 8px;vertical-align:middle}
 </style>
 </head>
 <body>
-<div class="logo-wrap">
-  <div class="logo-icon">🧾</div>
-  <div class="logo-name">KONVY KOL</div>
-  <div class="logo-sub">Invoice &amp; Quotation System</div>
+
+<div class="hero">
+  <div class="logo">🧾</div>
+  <div class="brand">KONVY <span>KOL</span></div>
+  <div class="tagline">Invoice &amp; Quotation System</div>
 </div>
 
 <div class="cards">
-  <a class="lang-card" href="index.html">
-    <div class="lang-flag">🇹🇭</div>
-    <div class="lang-info">
-      <div class="lang-title">ภาษาไทย</div>
-      <div class="lang-desc">ใบเสนอราคา / ใบแจ้งหนี้</div>
+  <a class="card" href="index-th.html">
+    <div class="flag">🇹🇭</div>
+    <div class="info">
+      <div class="lang">ภาษาไทย</div>
+      <div class="desc">ใบเสนอราคา / ใบแจ้งหนี้</div>
     </div>
-    <div class="lang-arrow">→</div>
+    <div class="arrow">→</div>
   </a>
 
-  <a class="lang-card" href="index-en.html">
-    <div class="lang-flag">🇬🇧</div>
-    <div class="lang-info">
-      <div class="lang-title">English</div>
-      <div class="lang-desc">Quotation / Invoice</div>
+  <a class="card" href="index-en.html">
+    <div class="flag">🇬🇧</div>
+    <div class="info">
+      <div class="lang">English</div>
+      <div class="desc">Quotation / Invoice</div>
     </div>
-    <div class="lang-arrow">→</div>
+    <div class="arrow">→</div>
   </a>
 
-  <a class="lang-card" href="index-zh.html">
-    <div class="lang-flag">🇨🇳</div>
-    <div class="lang-info">
-      <div class="lang-title">中文</div>
-      <div class="lang-desc">报价单 / 发票</div>
+  <a class="card" href="index-zh.html">
+    <div class="flag">🇨🇳</div>
+    <div class="info">
+      <div class="lang">中文</div>
+      <div class="desc">报价单 / 发票</div>
     </div>
-    <div class="lang-arrow">→</div>
+    <div class="arrow">→</div>
   </a>
 </div>
 
 <div class="footer">
-  KONVY International Co., Ltd.
-  <span class="pink-dot"></span>
-  KOL Invoice System
+  KONVY INTERNATIONAL<span class="dot"></span>KOL SYSTEM
 </div>
+
 </body>
 </html>
