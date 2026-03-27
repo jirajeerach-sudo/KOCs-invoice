@@ -1730,7 +1730,7 @@ const CO_DATA={
     tax:'0105554129276'
   }
 };
-function getCO(){ return CO_DATA['th']; }
+function getCO(){ var lang=(typeof _lblLang!=='undefined'&&CO_DATA[_lblLang])?_lblLang:'th'; return CO_DATA[lang]; }
 const CO=new Proxy({},{get:function(_,k){ return getCO()[k]; }});
 const TPLS=[
   {id:'t1',name:'Classic Centered',desc:'หัวข้อกลาง / แถบสีเข้ม'},
@@ -1938,7 +1938,7 @@ function renderInvoice(){
   var docMainTitle = isQuot ? 'ใบเสนอราคา' : 'ใบแจ้งหนี้';
   var docSubTitle  = isQuot ? 'QUOTATION · ใบเสนอราคา' : 'INVOICE · ใบแจ้งหนี้';
   var docNoPrefix = isQuot ? invNo.replace(/^INV-/i,'QT-') : invNo.replace(/^QT-/i,'INV-');
-  var coAddr=CO.addr.replace(/\n/g,'<br>');
+  var coAddr=getCO().addr.replace(/\n/g,'<br>');
   // sync due label ตาม docType
   (function(){
     var dueDiv = document.querySelector('.fc-body .field label');  })();
@@ -2007,8 +2007,8 @@ function renderInvoice(){
     '<div class="uni-party-det">'+(iPad?iPad.replace(/\n/g,'<br>'):'')+(iPhone?'<br>'+'โทร'+': '+iPhone:'')+(iEmail?'<br>'+iEmail:'')+(iCard?'<br>'+'เลขบัตร'+': '+iCard:'')+'</div></div>';
   var _payerLabel=_lblLang==='en'?'PAYER':_lblLang==='zh'?'付款方':'ผู้จ่ายเงิน';
   var partyTo='<div class="uni-party"><div class="uni-party-label">'+_payerLabel+'</div>'+
-    '<div class="uni-party-name">'+CO.name+'</div>'+
-    '<div class="uni-party-det">'+coAddr+'<br>'+CO.taxLabel+': '+CO.tax+'</div></div>';
+    '<div class="uni-party-name">'+getCO().name+'</div>'+
+    '<div class="uni-party-det">'+coAddr+'<br>'+getCO().taxLabel+': '+getCO().tax+'</div></div>';
 
   var sigImgHtml=sigData
     ? '<img src="'+sigData+'" style="max-height:44px;max-width:120px;object-fit:contain;display:block;margin:0 auto 2px;filter:contrast(1.8) brightness(0.3)">'
@@ -2202,7 +2202,7 @@ function renderInvoice(){
       '<div class="top-meta">'+'เลขที่'+': <strong>'+docNoPrefix+'</strong><br>'+'วันที่ออก'+': <strong>'+invDate+'</strong><br>'+'กำหนดชำระ'+': <strong>'+invDue+'</strong></div></div>'+
       '<div class="info-band">'+
       '<div class="info-cell"><div class="ic-lbl">'+'ผู้แจ้งหนี้'+'</div><div class="ic-val">'+iName+'</div><div class="ic-det">'+(iPad||'').replace(/\n/g,' ')+(iPhone?' · '+iPhone:'')+'</div></div>'+
-      '<div class="info-cell"><div class="ic-lbl">'+'ผู้จ่ายเงิน'+'</div><div class="ic-val">'+CO.name+'</div><div class="ic-det">'+CO.addr.replace(/\n/g,' ')+'</div></div>'+
+      '<div class="info-cell"><div class="ic-lbl">'+'ผู้จ่ายเงิน'+'</div><div class="ic-val">'+getCO().name+'</div><div class="ic-det">'+getCO().addr.replace(/\n/g,' ')+'</div></div>'+
       '<div class="info-cell"><div class="ic-lbl">แคมเปญ</div><div class="ic-val">'+(proj||'ไม่ระบุ')+'</div><div class="ic-det">'+(iEmail||'')+(iCard?'<br>บัตร: '+iCard:'')+'</div></div></div>'+
       '<div class="body"><table>'+tHeadReceipt+'<tbody>'+tRows+'</tbody></table>'+
       '<div class="sum-area"><div class="sum-box">'+sumBox()+'</div></div>'+
@@ -2223,8 +2223,7 @@ function renderInvoice(){
       sigRow+'</div></div>';
   } else if(t==='t15'){
     html='<div class="inv t15"><div class="top">'+
-      '<div class="top-co-block" style="display:flex;align-items:center;padding:20px 28px">'+
-        '<div style="font-size:.68rem;color:#9ca3af;letter-spacing:.08em;text-transform:uppercase">'+CO.taxLabel+': '+CO.tax+'</div>'+
+      '<div class="top-co-block" style="display:flex;align-items:center;padding:16px 28px 8px">'+
       '</div>'+
       '<div class="top-right">'+
         '<div class="top-doc">'+docMainTitle+'</div>'+
@@ -2238,7 +2237,7 @@ function renderInvoice(){
       '</div>'+
       '<div class="info-row">'+
       '<div class="info-cell"><div class="ic-lbl">'+'ผู้แจ้งหนี้'+'</div><div class="ic-val">'+iName+'</div><div class="ic-det">'+(iPad||'').replace(/\n/g,' ')+(iPhone?' · '+iPhone:'')+(iEmail?'<br>'+iEmail:'')+(iCard?'<br>'+'เลขบัตร'+': '+iCard:'')+'</div></div>'+
-      '<div class="info-cell"><div class="ic-lbl">'+'ผู้จ่ายเงิน'+'</div><div class="ic-val">'+CO.name+'</div><div class="ic-det">'+CO.addr.replace(/\n/g,' ')+'</div></div>'+
+      '<div class="info-cell"><div class="ic-lbl">'+'ผู้จ่ายเงิน'+'</div><div class="ic-val">'+getCO().name+'</div><div class="ic-det">'+getCO().addr.replace(/\n/g,' ')+'</div></div>'+
       '<div class="info-cell"><div class="ic-lbl">บัญชีธนาคาร</div><div class="ic-val">'+(bank||'–')+'</div><div class="ic-det">'+(bAcc||'–')+'<br>เลขบัญชี: '+(bNo||'–')+(bBr?' · '+bBr:'')+'</div></div></div>'+
       '<div class="body"><div class="section-lbl">รายการแจ้งหนี้</div>'+
       '<table>'+tHeadReport+'<tbody>'+tRows+'</tbody></table>'+
@@ -4582,13 +4581,15 @@ function updateBarterSummary(){
   var box = document.getElementById('barterSummaryBox');
   if(box){ box.style.background='#fff8f0'; box.style.border='1.5px solid #f97316'; }
   var title = document.getElementById('summaryBoxTitle');
-  if(title){ title.textContent='📦 รายการสินค้า Barter'; title.style.color='#c2410c'; }
+  var _barterTitle=_lblLang==='en'?'📦 Barter Product':_lblLang==='zh'?'📦 以物换物商品':'📦 รายการสินค้า Barter';
+  if(title){ title.textContent=_barterTitle; title.style.color='#c2410c'; }
   var lbl = document.getElementById('barterSummaryLabel');
-  if(lbl) lbl.textContent = 'มูลค่าสินค้า';
+  if(lbl) lbl.textContent = _lblLang==='en'?'Product Value':_lblLang==='zh'?'商品价值':'มูลค่าสินค้า';
   var vlbl = document.getElementById('summaryValueLabel');
-  if(vlbl) vlbl.textContent = 'มูลค่าสินค้า (แทนเงินสด)';
+  if(vlbl) vlbl.textContent = _lblLang==='en'?'Product Value (instead of cash)':_lblLang==='zh'?'商品价值(代替现金)':'มูลค่าสินค้า (แทนเงินสด)';
   var note = document.getElementById('summaryNote');
-  if(note){ note.textContent='ไม่มีการโอนเงินสด — ชำระด้วยสินค้าแทน'; note.style.color='#9a6040'; }
+  var _noTransfer=_lblLang==='en'?'No cash transfer — paid with product instead':_lblLang==='zh'?'无现金转账 — 以商品代替付款':'ไม่มีการโอนเงินสด — ชำระด้วยสินค้าแทน';
+  if(note){ note.textContent=_noTransfer; note.style.color='#9a6040'; }
   var si = document.getElementById('barterSummaryItem');
   var sv = document.getElementById('barterSummaryValue');
   if(si) si.textContent = item || '–';
@@ -4612,13 +4613,15 @@ function updateCreditSummary(){
   var box = document.getElementById('barterSummaryBox');
   if(box){ box.style.background='#fdf0f7'; box.style.border='1.5px solid #f73174'; }
   var title = document.getElementById('summaryBoxTitle');
-  if(title){ title.textContent='🎁 มูลค่า KONVY Credit'; title.style.color='#f73174'; }
+  var _creditTitle=_lblLang==='en'?'🎁 KONVY Credit Value':_lblLang==='zh'?'🎁 KONVY积分价值':'🎁 มูลค่า KONVY Credit';
+  if(title){ title.textContent=_creditTitle; title.style.color='#f73174'; }
   var lbl = document.getElementById('barterSummaryLabel');
   if(lbl) lbl.textContent = 'Member ID';
   var vlbl = document.getElementById('summaryValueLabel');
-  if(vlbl) vlbl.textContent = 'มูลค่า Credit (แทนเงินสด)';
+  if(vlbl) vlbl.textContent = _lblLang==='en'?'Credit Value (instead of cash)':_lblLang==='zh'?'积分价值(代替现金)':'มูลค่า Credit (แทนเงินสด)';
   var note = document.getElementById('summaryNote');
-  if(note){ note.textContent='KONVY จะโอน Credit เข้า App ตาม Member ID ที่ระบุ'; note.style.color='#c0609a'; }
+  var _creditNote=_lblLang==='en'?'KONVY will transfer Credit to the App per the specified Member ID':_lblLang==='zh'?'KONVY将按指定会员ID将积分转入App':'KONVY จะโอน Credit เข้า App ตาม Member ID ที่ระบุ';
+  if(note){ note.textContent=_creditNote; note.style.color='#c0609a'; }
   var si = document.getElementById('barterSummaryItem');
   var sv = document.getElementById('barterSummaryValue');
   if(si) si.textContent = memberId;
