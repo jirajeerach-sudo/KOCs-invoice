@@ -31,7 +31,7 @@ body{font-family:'Sarabun',sans-serif;background:#fff;min-height:100vh;display:f
   <div class="tagline">Invoice &amp; Quotation System</div>
 </div>
 <div class="cards">
-  <a class="card" href="#" onclick="openLang('index-th.html');return false;">
+  <a class="card" href="https://jirajeerach-sudo.github.io/KOCs-invoice/index-th.html">
     <div class="flag">🇹🇭</div>
     <div class="info">
       <div class="lang">ภาษาไทย</div>
@@ -39,7 +39,7 @@ body{font-family:'Sarabun',sans-serif;background:#fff;min-height:100vh;display:f
     </div>
     <div class="arrow">→</div>
   </a>
-  <a class="card" href="#" onclick="openLang('index-en.html');return false;">
+  <a class="card" href="https://jirajeerach-sudo.github.io/KOCs-invoice/index-en.html">
     <div class="flag">🇬🇧</div>
     <div class="info">
       <div class="lang">English</div>
@@ -47,7 +47,7 @@ body{font-family:'Sarabun',sans-serif;background:#fff;min-height:100vh;display:f
     </div>
     <div class="arrow">→</div>
   </a>
-  <a class="card" href="#" onclick="openLang('index-zh.html');return false;">
+  <a class="card" href="https://jirajeerach-sudo.github.io/KOCs-invoice/index-zh.html">
     <div class="flag">🇨🇳</div>
     <div class="info">
       <div class="lang">中文</div>
@@ -57,23 +57,5 @@ body{font-family:'Sarabun',sans-serif;background:#fff;min-height:100vh;display:f
   </a>
 </div>
 <div class="footer">KONVY INTERNATIONAL &middot; KOL SYSTEM</div>
-<script>
-var ua=navigator.userAgent;
-var isIOS=/iPad|iPhone|iPod/.test(ua)&&!window.MSStream;
-var isAndroid=/Android/.test(ua);
-var isInApp=/Line|FBAN|FBAV|Instagram|MicroMessenger|DingTalk|TikTok|WeChat/i.test(ua);
-var BASE='https://jirajeerach-sudo.github.io/KOCs-invoice/';
-function openLang(page){
-  var url=BASE+page;
-  if(isAndroid&&isInApp){
-    window.location.href='intent://'+url.replace(/^https?:\/\//,'')+'#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url='+encodeURIComponent(url)+';end';
-  } else if(isIOS&&isInApp){
-    window.location.href=url.replace('https://','x-safari-https://');
-    setTimeout(function(){window.location.href=url;},1000);
-  } else {
-    window.location.href=url;
-  }
-}
-</script>
 </body>
 </html>
