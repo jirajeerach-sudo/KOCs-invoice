@@ -1859,7 +1859,9 @@ function calcTotal(){
     if(whtRow) whtRow.style.display = 'none';
     // เปลี่ยน label ยอดที่ได้รับ
     var totLbl = document.querySelector('.sum-tot-l');
-    if(totLbl) totLbl.textContent = currentPayType==='credit' ? 'มูลค่า Credit' : 'มูลค่าสินค้า';
+    var _cvLbl = _lblLang==='en'?'Credit Value':_lblLang==='zh'?'积分价值':'มูลค่า Credit';
+    var _pvLbl = _lblLang==='en'?'Product Value':_lblLang==='zh'?'商品价值':'มูลค่าสินค้า';
+    if(totLbl) totLbl.textContent = currentPayType==='credit' ? _cvLbl : _pvLbl;
     var vatSel = document.getElementById('vatSel');
     if(vatSel) vatSel.closest('.sum-sr').style.display = 'none';
     var subRow = document.getElementById('sumSub')?.closest('.sum-sr');
@@ -1919,11 +1921,13 @@ function getItems(){
 
 
 var currentDocType = 'quot'; // default
+var _lblLang="th";
 function renderInvoice(){
   var c=calcTotal(), sub=c.sub, wht=c.wht, vat=c.vat, total=c.total, whtPct=c.whtPct, vatPct=c.vatPct;
   var items=getItems();
   var t=currentTpl;
-  var iName=v('infName')||'ชื่ออินฟลูเอนเซอร์';
+  var _nameHolder=_lblLang==='en'?'Influencer Name':_lblLang==='zh'?'网红姓名':'ชื่ออินฟลูเอนเซอร์';
+  var iName=v('infName')||_nameHolder;
   var iNick=v('infNick'), iPad=v('infAddr'), iPhone=v('infPhone');
   var iEmail=v('infEmail'), iCard=v('infCardNo');
   var proj=v('invProject'), note=v('invNote');
@@ -1948,7 +1952,18 @@ function renderInvoice(){
       '<td class="ta">฿'+fmt(it.qty*it.price)+'</td></tr>';
   }).join('');
 
-  var tHead='<thead><tr><th class="tn">#</th><th class="td" style="text-align:left">'+'รายการ'+'</th><th class="tq">'+'จำนวน'+'</th><th class="tp">'+'ราคา/หน่วย'+'</th><th class="ta">'+'จำนวนเงิน'+'</th></tr></thead>';
+  // column headers by language — hardcoded to prevent translation collision
+  var _thMap={
+    th:{item:'__THITEM__',qty:'__THQTY__',price:'__THPRICE__',amount:'__THAMOUNT__'},
+    en:{item:'Item',qty:'Qty',price:'Unit Price',amount:'Amount'},
+    zh:{item:'项目',qty:'数量',price:'单价',amount:'金额'}
+  };
+  // restore TH labels at runtime
+  if(_thMap.th.item==='__THITEM__'){
+    _thMap.th={item:'รายการ',qty:'จำนวน',price:'ราคา/หน่วย',amount:'จำนวนเงิน'};
+  }
+  var _th=_thMap[typeof _lblLang!=='undefined'&&_thMap[_lblLang]?_lblLang:'th'];
+  var tHead='<thead><tr><th class="tn">#</th><th class="td" style="text-align:left">'+_th.item+'</th><th class="tq">'+_th.qty+'</th><th class="tp">'+_th.price+'</th><th class="ta">'+_th.amount+'</th></tr></thead>';
   var tHeadReceipt='<thead><tr><th class="tn">#</th><th class="td" style="text-align:left">'+'รายการ'+'</th><th class="tq">'+'จำนวน'+'</th><th class="tp">'+'ราคา/หน่วย'+'</th><th class="ta">'+'จำนวนเงิน'+'</th></tr></thead>';
   var tHeadReport='<thead><tr><th class="tn">ลำดับ</th><th class="td" style="text-align:left">คำอธิบาย</th><th class="tq">หน่วย</th><th class="tp">ต่อหน่วย</th><th class="ta">รวมเงิน</th></tr></thead>';
 
@@ -1986,10 +2001,12 @@ function renderInvoice(){
       '<div class="sum-r tot"><span>'+_totLabel+'</span><span>฿'+fmt(total)+'</span></div>';
   }
 
-  var partyFrom='<div class="uni-party"><div class="uni-party-label">'+'ผู้แจ้งหนี้ (ผู้รับเงิน)'+'</div>'+
+  var _payeeLabel=_lblLang==='en'?'PAYEE':_lblLang==='zh'?'收款方':'ผู้แจ้งหนี้ (ผู้รับเงิน)';
+  var partyFrom='<div class="uni-party"><div class="uni-party-label">'+_payeeLabel+'</div>'+
     '<div class="uni-party-name">'+iName+(iNick?' ('+iNick+')':'')+'</div>'+
     '<div class="uni-party-det">'+(iPad?iPad.replace(/\n/g,'<br>'):'')+(iPhone?'<br>'+'โทร'+': '+iPhone:'')+(iEmail?'<br>'+iEmail:'')+(iCard?'<br>'+'เลขบัตร'+': '+iCard:'')+'</div></div>';
-  var partyTo='<div class="uni-party"><div class="uni-party-label">'+'ผู้จ่ายเงิน'+'</div>'+
+  var _payerLabel=_lblLang==='en'?'PAYER':_lblLang==='zh'?'付款方':'ผู้จ่ายเงิน';
+  var partyTo='<div class="uni-party"><div class="uni-party-label">'+_payerLabel+'</div>'+
     '<div class="uni-party-name">'+CO.name+'</div>'+
     '<div class="uni-party-det">'+coAddr+'<br>'+CO.taxLabel+': '+CO.tax+'</div></div>';
 
@@ -2027,7 +2044,7 @@ function renderInvoice(){
   }
 
   var sigRow='<div class="sig-row-uni">'+
-    '<div class="sig-blk-uni"><div class="sig-space" style="display:flex;align-items:flex-end;justify-content:center;min-height:44px">'+sigImgHtml+'</div><div class="sig-line-uni"><div class="sig-name">'+iName+'</div><div class="sig-role">'+'ผู้แจ้งหนี้'+'</div></div></div>'+
+    '<div class="sig-blk-uni"><div class="sig-space" style="display:flex;align-items:flex-end;justify-content:center;min-height:44px">'+sigImgHtml+'</div><div class="sig-line-uni"><div class="sig-name">'+iName+'</div><div class="sig-role">'+(_lblLang==='en'?'Payee':_lblLang==='zh'?'收款方':'ผู้แจ้งหนี้')+'</div></div></div>'+
     '<div class="sig-blk-uni"><div class="sig-space"></div><div class="sig-line-uni"><div class="sig-name">&nbsp;</div><div class="sig-role">'+'ผู้รับเอกสาร'+'</div></div></div>'+
     '<div class="sig-blk-uni"><div class="sig-space"></div><div class="sig-line-uni"><div class="sig-name">&nbsp;</div><div class="sig-role">'+'ผู้อนุมัติจ่าย'+'</div></div></div>'+
     '</div>';
@@ -4141,12 +4158,16 @@ function updateAdsDurLabel(){
   var dur = typeof getAdsDuration==='function' ? getAdsDuration() : '';
   var el = document.getElementById('tcDetail23Dur');
   if(!el) return;
-  if(!dur || dur==='ไม่อนุญาต'){
-    el.textContent = '— ไม่อนุญาต';
+  var _durLabel = (typeof _lblLang!=='undefined' && _lblLang==='en') ? 'Duration' :
+                  (typeof _lblLang!=='undefined' && _lblLang==='zh') ? '期限' : 'ระยะเวลา';
+  var _notPerm  = (typeof _lblLang!=='undefined' && _lblLang==='en') ? 'Not Permitted' :
+                  (typeof _lblLang!=='undefined' && _lblLang==='zh') ? '不允许' : 'ไม่อนุญาต';
+  if(!dur || dur==='ไม่อนุญาต' || dur==='Not Permitted' || dur==='不允许'){
+    el.textContent = '— '+_notPerm;
     el.style.color = '#dc2626';
     el.style.fontWeight = '700';
   } else {
-    el.textContent = '— ระยะเวลา: '+dur;
+    el.textContent = '— '+_durLabel+': '+dur;
     el.style.color = '#555';
     el.style.fontWeight = '600';
   }
