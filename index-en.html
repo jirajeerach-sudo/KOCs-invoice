@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1129,15 +1129,15 @@ body{font-family:'Sarabun',sans-serif;background:#eef2f7;color:#1a1a2e;min-heigh
     <div style="font-size:.82rem;color:#8a96a3;line-height:1.6;margin-bottom:14px" id="doneMsg">File ready</div>
     <div id="lineBrowserWarn" style="display:none;background:#fff8e1;border:1.5px solid #ffc107;border-radius:10px;padding:14px;margin-bottom:14px;text-align:left">
       <div style="font-size:.85rem;font-weight:700;color:#7a5c00;margin-bottom:6px">⚠️ เCloseผ่าน WeChat / DingTalk</div>
-      <div style="font-size:.78rem;color:#7a5c00;line-height:1.6;margin-bottom:10px">แอปนี้บล็อคการดาวน์โหลดไฟล์ กรุณาเCloseลิงก์นี้ใน Safari หรือ Chrome แทนค่ะ</div>
+      <div style="font-size:.78rem;color:#7a5c00;line-height:1.6;margin-bottom:10px">This app blocks file downloads. Please open this link in Safari or Chrome instead.</div>
       <!-- URL box -->
       <div style="display:flex;gap:6px;margin-bottom:10px;align-items:center">
         <div id="lbwUrlBox" style="flex:1;background:#fff;border:1.5px solid #ffc107;border-radius:6px;padding:7px 10px;font-size:.72rem;color:#555;word-break:break-all;line-height:1.4">https://konvykols.github.io/invoice/</div>
-        <button onclick="lbwCopyUrl()" id="lbwCopyBtn" style="flex-shrink:0;background:#f0c040;color:#1a1a2e;border:none;border-radius:7px;padding:8px 12px;font-family:Sarabun,sans-serif;font-size:.78rem;font-weight:700;cursor:pointer;white-space:nowrap">📋 คัดลอกลิงก์</button>
+        <button onclick="lbwCopyUrl()" id="lbwCopyBtn" style="flex-shrink:0;background:#f0c040;color:#1a1a2e;border:none;border-radius:7px;padding:8px 12px;font-family:Sarabun,sans-serif;font-size:.78rem;font-weight:700;cursor:pointer;white-space:nowrap">📋 Copy Link</button>
       </div>
       <!-- QR Code -->
       <div style="text-align:center;margin-bottom:8px">
-        <div style="font-size:.68rem;color:#9a7a30;margin-bottom:6px">หรือสแกน QR Code เพื่อเCloseใน browser</div>
+        <div style="font-size:.68rem;color:#9a7a30;margin-bottom:6px">or scan QR Code to open in browser</div>
         <canvas id="lbwQrCanvas" width="120" height="120" style="border:3px solid #ffc107;border-radius:6px;background:#fff"></canvas>
       </div>
     </div>
@@ -1203,7 +1203,7 @@ body{font-family:'Sarabun',sans-serif;background:#eef2f7;color:#1a1a2e;min-heigh
     <!-- Custom range input -->
     <div id="pdfCustomRange" style="display:none;margin-bottom:14px;background:#f4f7fa;border-radius:8px;padding:12px">
       <div style="font-size:.72rem;color:#555;margin-bottom:8px;font-weight:600">e.g. <span style="color:#4a90d9">1, 3, 5-7</span></div>
-      <input id="pdfRangeInput" type="text" placeholder="เช่น 1-3 หรือ 1,2,4"
+      <input id="pdfRangeInput" type="text" placeholder="เช่น 1-3 or 1,2,4"
         style="border:1.5px solid #dde3ea;border-radius:6px;padding:8px 11px;font-size:.85rem;font-family:Sarabun,sans-serif;width:100%;outline:none"
         oninput="validatePdfRange()">
       <div id="pdfRangeError" style="font-size:.7rem;color:#e05050;margin-top:5px;display:none"></div>
@@ -1224,37 +1224,37 @@ body{font-family:'Sarabun',sans-serif;background:#eef2f7;color:#1a1a2e;min-heigh
 <div class="tc-overlay" id="tcOverlay">
   <div class="tc-box">
     <div class="tc-header">
-      <div class="tc-title">📋 Terms & Conditions for KOL</div>
+      <div class="tc-title">📋 Terms &amp; Conditions for KOL Collaboration</div>
       <div class="tc-subtitle">Please read and accept before submitting</div>
     </div>
     <div class="tc-body" id="tcBody">
 
       <!-- ═══ ข้อ 1 ขอบเขตงาน ═══ -->
       <div class="tc-section">
-        <div class="tc-section-title">📌 ข้อ 1. ขอบเขตงานและหน้าที่ความรับผิดชอบ</div>
+        <div class="tc-section-title">📌 Article 1. Scope of Work</div>
 
-        <p><strong>1.1 การผลิตเนื้อหา:</strong> KOL/KOC ตกลงผลิตสื่อประชาสัมพันธ์ในรูปแบบวิดีโอ (Short-form Video) หรือรูปภาพ ตาม Brief และระยะเวลาที่บริษัทฯ กำหนด</p>
+        <p><strong>1.1 Content Production:</strong> KOL/KOC agrees to produce promotional content in Short-form Video or image format per Brief and timeline set by the company</p>
 
-        <p><strong>1.2 การตรวจพิจารณางาน:</strong> KOL/KOC ต้องส่ง Draft ให้บริษัทฯ ตรวจสอบและอนุมัติก่อนเผยแพร่ทุกครั้ง บริษัทฯ มีสิทธิ์ขอแก้ไขได้ตามความเหมาะสม</p>
+        <p><strong>1.2 Content Review:</strong> KOL/KOC must submit a Draft for company review and approval before every publication. The company reserves the right to request revisions</p>
 
-        <p><strong>1.3 การเผยแพร่และคงสภาพเนื้อหา:</strong> KOL/KOC ต้องเผยแพร่เนื้อหาตามวันและเวลาที่ตกลงกัน และคงเนื้อหาไว้ (No Delete / No Hide) เป็นระยะเวลาไม่น้อยกว่า 12 เดือน นับจากวันที่เผยแพร่</p>
+        <p><strong>1.3 Publication &amp; Content Retention:</strong> KOL/KOC must publish content on the agreed date and time, and retain it (No Delete / No Hide) for at least 12 months from publication date</p>
         <div class="tc-field">
           <label>📅 Agreed Publication Date</label>
           <div id="tcPublishDateDisplay" style="border:1.5px solid #dde3ea;border-radius:7px;padding:8px 11px;font-size:.85rem;font-family:'Sarabun',sans-serif;background:#f4f7fa;min-height:38px;display:flex;align-items:center">
-            <span id="tcPublishDateText" style="color:#8a96a3;font-style:italic">Please fill in post date in the form first</span>
+            <span id="tcPublishDateText" style="color:#8a96a3;font-style:italic">Please fill in the post date in the main form first</span>
           </div>
         </div>
 
-        <p style="margin-top:8px"><strong>1.4 การส่งมอบไฟล์ต้นฉบับ:</strong> KOL/KOC ตกลงส่งไฟล์วิดีโอต้นฉบับ Hi-Res None Watermark ให้บริษัทฯ ภายใน 3 วันทำการหลังจากเนื้อหาได้รับอนุมัติ</p>
+        <p style="margin-top:8px"><strong>1.4 Original File Delivery:</strong> KOL/KOC agrees to deliver original Hi-Res video (no Watermark) within 3 business days after approval</p>
       </div>
 
       <!-- ═══ ข้อ 2 Usage Rights ═══ -->
       <div class="tc-section" style="margin-top:12px">
-        <div class="tc-section-title">🔐 ข้อ 2. สิทธิ์ในทรัพย์สินทางปัญญาและการนำไปใช้ (Usage Rights)</div>
+        <div class="tc-section-title">🔐 Article 2. Intellectual Property &amp; Usage Rights</div>
 
-        <p style="font-size:.8rem;color:#555;margin-bottom:8px">KOL/KOC อนุญาตให้บริษัทฯ นำเนื้อหาไปใช้งานหรือไม่?</p>
+        <p style="font-size:.8rem;color:#555;margin-bottom:8px">Does KOL/KOC permit the company to use the content?</p>
 
-        <!-- 3 ตัวเลือก -->
+        <!-- 3 ตัวSelect -->
         <div class="tc-toggle-row" style="display:grid;grid-template-columns:1fr 1fr 1fr">
           <button class="tc-toggle-btn active" id="btnUsageFree" onclick="setUsageType('free')" style="font-size:.8rem;padding:10px 6px;white-space:nowrap">✅ Free to Use</button>
           <button class="tc-toggle-btn" id="btnUsagePaid" onclick="setUsageType('paid')" style="font-size:.8rem;padding:10px 6px;white-space:nowrap">💰 Charge Usage Fee</button>
@@ -1263,7 +1263,7 @@ body{font-family:'Sarabun',sans-serif;background:#eef2f7;color:#1a1a2e;min-heigh
 
         <!-- Not Permitted: แสดงข้อความสรุป -->
         <div id="tcNoneBox" style="display:none;margin-top:8px;background:#fff5f5;border:1.5px solid #fca5a5;border-radius:8px;padding:10px 14px;font-size:.8rem;color:#991b1b">
-          ❌ KOL/KOC <strong>Not Permitted</strong>ให้บริษัทฯ นำ Asset ไปใช้งานในเชิงพาณิชย์ใดๆ ทั้งสิ้น (2.1, 2.2, 2.3)
+          ❌ KOL/KOC <strong>Not Permitted</strong>The company is not permitted to use the Asset commercially (2.1, 2.2, 2.3)
         </div>
 
         <!-- อนุญาตฟรี: แสดง ดัดแปลง + ระยะเวลา -->
@@ -1274,27 +1274,27 @@ body{font-family:'Sarabun',sans-serif;background:#eef2f7;color:#1a1a2e;min-heigh
               <select class="tc-input" id="tcCanModify" onchange="onTcFieldChange()">
                 <option value="ได้">✅ Allowed</option>
                 <option value="ไม่ได้">❌ Not Allowed</option>
-                <option value="Partial">⚠️ Partial</option>
+                <option value="ได้บางส่วน">⚠️ Partial</option>
               </select>
             </div>
             <div class="tc-field">
               <label>Asset Usage Duration</label>
               <select class="tc-input" id="tcAssetDuration" onchange="onTcFieldChange()">
                 <option value="Unlimited">Unlimited</option>
-                <option value="6 เดือน">6 เดือน</option>
-                <option value="1 ปี">1 ปี</option>
-                <option value="2 ปี">2 ปี</option>
-                <option value="3 ปี">3 ปี</option>
+                <option value="6 Months">6 Months</option>
+                <option value="1 Year">1 Year</option>
+                <option value="2 Years">2 Years</option>
+                <option value="3 Years">3 Years</option>
                 <option value="As Agreed">As Agreed</option>
               </select>
             </div>
             <div class="tc-field" style="grid-column:1/-1">
               <label>Paid Ads Duration</label>
               <select class="tc-input" id="tcAdsDuration" onchange="onAdsSelect();onTcFieldChange()">
-                <option value="1 ปี">1 ปี (ค่าเริ่มต้น)</option>
-                <option value="3 เดือน">3 เดือน</option>
-                <option value="6 เดือน">6 เดือน</option>
-                <option value="2 ปี">2 ปี</option>
+                <option value="1 Year">1 Year (default)</option>
+                <option value="3 Months">3 Months</option>
+                <option value="6 Months">6 Months</option>
+                <option value="2 Years">2 Years</option>
                 <option value="Unlimited">Unlimited</option>
                 <option value="Not Permitted">❌ Not Permitted</option>
                 <option value="custom">✏️ Custom...</option>
@@ -1309,8 +1309,8 @@ body{font-family:'Sarabun',sans-serif;background:#eef2f7;color:#1a1a2e;min-heigh
           <!-- สรุปรายละเอียด -->
           <div class="tc-usage-detail show" id="tcUsageDetail" style="margin-top:8px">
             <ul>
-              <li><strong>2.1 กรรมสิทธิ์ในผลงาน:</strong> KOL/KOC อนุญาตให้บริษัทฯ นำ Asset ไปใช้เผยแพร่ ซ้ำ หรือTotalกับเนื้อหาอื่นในทุกช่องทาง Social Media <span id="tcDetail21Fee" style="color:#2ecc71;font-weight:700">— ไม่คิดค่าใช้จ่ายเพิ่มเติม</span></li>
-              <li style="margin-top:4px"><strong>2.3 Paid Ads & Whitelisting:</strong> KOL/KOC ยินยอมให้บริษัทฯ ยิงโฆษณาผ่าน Asset <span id="tcDetail23Fee" style="color:#2ecc71;font-weight:700"></span> <span id="tcDetail23Dur" style="color:#555;font-weight:600"></span></li>
+              <li><strong>2.1 IP Ownership:</strong> KOL/KOC permits the company to repost, share, or combine Asset with other content on all Social Media channels <span id="tcDetail21Fee" style="color:#2ecc71;font-weight:700">— No additional charge</span></li>
+              <li style="margin-top:4px"><strong>2.3 Paid Ads & Whitelisting:</strong> KOL/KOC consents to the company running ads via this Asset <span id="tcDetail23Fee" style="color:#2ecc71;font-weight:700"></span> <span id="tcDetail23Dur" style="color:#555;font-weight:600"></span></li>
             </ul>
           </div>
         </div>
@@ -1321,26 +1321,26 @@ body{font-family:'Sarabun',sans-serif;background:#eef2f7;color:#1a1a2e;min-heigh
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
             <div class="tc-field">
               <label>2.1 IP Rights / Repost</label>
-              <input type="text" class="tc-input" id="tcFee21" placeholder="เช่น 5,000 บาท" oninput="onTcFieldChange()">
+              <input type="text" class="tc-input" id="tcFee21" placeholder="e.g. 5,000 THB" oninput="onTcFieldChange()">
             </div>
             <div class="tc-field">
               <label>2.2 Likeness Rights</label>
-              <input type="text" class="tc-input" id="tcFee22" placeholder="เช่น 3,000 บาท" oninput="onTcFieldChange()">
+              <input type="text" class="tc-input" id="tcFee22" placeholder="e.g. 3,000 THB" oninput="onTcFieldChange()">
             </div>
             <div class="tc-field" style="grid-column:1/-1">
               <label>2.3 Paid Ads & Whitelisting</label>
-              <input type="text" class="tc-input" id="tcFee23" placeholder="เช่น 8,000 บาท" oninput="onTcFieldChange()">
+              <input type="text" class="tc-input" id="tcFee23" placeholder="e.g. 8,000 THB" oninput="onTcFieldChange()">
             </div>
           </div>
-          <p class="tc-note">📌 Usage fees will be recorded and legally binding</p>
+          <p class="tc-note">📌 Usage fees will be recorded and are legally binding</p>
         </div>
       </div>
 
       <!-- ═══ ข้อ 3 เนื้อหาและจรรยาบรรณ ═══ -->
       <div class="tc-section" style="margin-top:12px">
-        <div class="tc-section-title">📋 ข้อ 3. ข้อกำหนดด้านเนื้อหาและจรรยาบรรณ</div>
+        <div class="tc-section-title">📋 Article 3. Content Guidelines &amp; Ethics</div>
         <ul>
-          <li><strong>3.1</strong> เนื้อหาต้องไม่กล่าวพาดพิงหรือสร้างความเสียหายต่อภาพลักษณ์บริษัทฯ หรือแบรนด์ใดๆ</li>
+          <li><strong>3.1</strong> Content must not defame or damage the reputation of the company or any brand</li>
 
 
         </ul>
@@ -1348,24 +1348,24 @@ body{font-family:'Sarabun',sans-serif;background:#eef2f7;color:#1a1a2e;min-heigh
 
       <!-- ═══ ข้อ 4 บทลงโทษ ═══ -->
       <div class="tc-section" style="margin-top:12px">
-        <div class="tc-section-title">⚠️ ข้อ 4. การชดเชยและการผิดสัญญา</div>
+        <div class="tc-section-title">⚠️ Article 4. Compensation &amp; Breach</div>
         <ul>
-          <li><strong>4.1</strong> หาก KOL/KOC ลบหรือซ่อนเนื้อหาก่อนกำหนด บริษัทฯ มีสิทธิ์เรียกคืนProduct Value (กรณี Barter) หรือเรียกร้องค่าเสียหายตามจริง</li>
-          <li><strong>4.2</strong> หาก Content ผิดกฎหมายหรือสร้างความเสียหาย KOL/KOC รับผิดชอบค่าเสียหายAllTotalถึงค่าทนายความ</li>
+          <li><strong>4.1</strong> If KOL/KOC removes or hides content early, the company may reclaim product value (Barter) or claim actual damages</li>
+          <li><strong>4.2</strong> If Content violates the law or causes damage, KOL/KOC bears full liability including legal fees</li>
         </ul>
       </div>
 
       <!-- ═══ ข้อ 5 ภาษีและกฎหมาย ═══ -->
       <div class="tc-section" style="margin-top:12px">
-        <div class="tc-section-title">🧾 ข้อ 5. ภาษีและกฎหมายที่ใช้บังคับ</div>
+        <div class="tc-section-title">🧾 Article 5. Tax &amp; Applicable Law</div>
         <ul>
-          <li>ภาษีWithholding Tax (WHT): KONVY หัก <strong>3%</strong> สำหรับบุคคลธรรมดาไทย (บัตรประชาชน 13 หลัก) หรือ <strong>5%</strong> สำหรับต่างชาติ (Passport) และออกหนังสือรับรองให้ภายใน 30 วัน</li>
-          <li>กรณีผู้รับจ้าง <strong>จดทะเบียนVAT (VAT 7%)</strong>: Noneการหักภาษี ณ ที่จ่าย และผู้รับจ้างต้องออกใบกำกับVATให้ KONVY</li>
-          <li>สัญญาฉบับนี้อยู่ภายใต้กฎหมายไทย ข้อพิพาทเสนอต่อศาลแพ่งกรุงเทพใต้</li>
-          <li>KOL/KOC มีสถานะ <strong>Independent Contractor</strong> ไม่ใช่พนักงาน Noneสิทธิ์สวัสดิการแรงงาน</li>
+          <li>Withholding Tax (WHT): KONVY deducts <strong>3%</strong> for Thai individuals (13-digit ID) or <strong>5%</strong> for foreigners (Passport) and issues certificate within 30 days</li>
+          <li>If contractor is <strong>VAT registered (7%)</strong>: no WHT; contractor must issue a VAT invoice to KONVY</li>
+          <li>This agreement is governed by Thai law. Disputes shall be submitted to the Bangkok South Civil Court</li>
+          <li>KOL/KOC has the status of <strong>Independent Contractor</strong> independent contractor; no labor welfare entitlements</li>
         </ul>
         <p style="font-size:.74rem;color:#8a96a3;margin-top:10px;border-top:1px solid #eee;padding-top:8px">
-          การยอมรับ T&amp;C นี้มีผลทางกฎหมายเทียบเท่าลายเซ็น ตาม พ.ร.บ.ธุรกรรมทางอิเล็กทรอนิกส์ พ.ศ. 2544 มาตรา 7, 9
+          Acceptance of these T&amp;C is legally equivalent to a signature under the Electronic Transactions Act B.E. 2544, Sections 7 and 9
         </p>
       </div>
 
@@ -1377,13 +1377,13 @@ body{font-family:'Sarabun',sans-serif;background:#eef2f7;color:#1a1a2e;min-heigh
       </div>
       <!-- hint วันที่ -->
       <div id="tcDateHint" style="display:none;background:#fff8e1;border:1.5px solid #ffc107;border-radius:8px;padding:8px 12px;font-size:.78rem;color:#7a5c00;margin-bottom:10px;font-weight:600">
-        ⚠️ Please fill in <strong>planned post date</strong> in the main form before accepting
+        ⚠️ Please fill in <strong>Planned Post Date</strong> in the main form before accepting
       </div>
       <label class="tc-check-row" id="tcCheckRow">
         <input type="checkbox" id="tcCheckbox" onchange="onTcCheck()">
-        <span class="tc-check-label">I have read and agree to all terms and conditions above, and consent to their use as legal evidence</span>
+        <span class="tc-check-label">I have read and agree to all terms above, and consent to their use as legal evidence</span>
       </label>
-      <button class="tc-agree-btn" id="tcAgreeBtn" disabled onclick="acceptTC()">Accept & Continue</button>
+      <button class="tc-agree-btn" id="tcAgreeBtn" disabled onclick="acceptTC()">Accept &amp; Continue</button>
     </div>
   </div>
 </div>
@@ -1392,12 +1392,12 @@ body{font-family:'Sarabun',sans-serif;background:#eef2f7;color:#1a1a2e;min-heigh
   <div class="picker-inner">
     <div class="picker-top">
       <div class="picker-logo">🧾 KONVY KOL <span>Fill Info &#8594; Preview &#8594; Save PDF</span></div>
-      <div class="picker-actions" id="topActions">
+      <div style="display:flex;align-items:center"><a href="index-th.html" style="display:inline-flex;align-items:center;padding:5px 11px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);border-radius:20px;color:#fff;font-family:Sarabun,sans-serif;font-size:.75rem;font-weight:700;text-decoration:none;margin-right:6px">🇹🇭 TH</a></div><div class="picker-actions" id="topActions">
         <div class="tc-accepted-badge" id="tcBadge" style="margin-right:4px">
           <span>✅</span><span style="font-size:.68rem">T&C Accepted</span>
         </div>
         <button class="btn-act" id="btnGetLink" onclick="getQtLink()" style="display:none;background:rgba(74,144,217,.15);color:#4a90d9;border:1.5px solid #4a90d9;font-size:.75rem;padding:6px 12px">🔗 Get INV Link</button>
-        <button class="btn-act" id="btnEditTC" onclick="editTC()" style="display:none;background:rgba(247,49,116,.12);color:#f73174;border:1.5px solid #f73174;font-size:.75rem;padding:6px 12px">📋 Edit T&C</button>
+        <button class="btn-act" id="btnEditTC" onclick="editTC()" style="display:none;background:rgba(247,49,116,.12);color:#f73174;border:1.5px solid #f73174;font-size:.75rem;padding:6px 12px">📋 แก้ไข T&C</button>
         <button class="btn-act" id="btnNextToTemplate" onclick="openTC()" style="background:#4a90d9;color:#fff">Next: Preview →</button>
       </div>
     </div>
@@ -1441,11 +1441,11 @@ body{font-family:'Sarabun',sans-serif;background:#eef2f7;color:#1a1a2e;min-heigh
     <button onclick="changeZoom(-0.1)" style="width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#fff;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center">−</button>
     <span id="zoomLbl" style="color:rgba(255,255,255,.7);font-size:.75rem;font-family:Sarabun,sans-serif;min-width:40px;text-align:center">100%</span>
     <button onclick="changeZoom(0.1)" style="width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#fff;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center">+</button>
-    <button onclick="resetZoom()" style="padding:6px 12px;border-radius:20px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:rgba(255,255,255,.6);font-size:.7rem;font-family:Sarabun,sans-serif;cursor:pointer;margin-left:4px">รีเซ็ต</button>
+    <button onclick="resetZoom()" style="padding:6px 12px;border-radius:20px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:rgba(255,255,255,.6);font-size:.7rem;font-family:Sarabun,sans-serif;cursor:pointer;margin-left:4px">Reset</button>
   </div>
   <!-- Upload Summary Panel -->
   <div id="uploadSummary">
-    <div class="us-title">📋 สรุปข้อมูลที่อัปโหลดAll</div>
+    <div class="us-title">📋 Upload Summary</div>
     <div class="us-grid" id="usSummaryGrid"></div>
   </div>
 
@@ -1476,7 +1476,7 @@ body{font-family:'Sarabun',sans-serif;background:#eef2f7;color:#1a1a2e;min-heigh
     <div class="fc">
       <div class="fc-head" style="background:#f73174;color:#fff"><span>📋 Number &amp; Date</span></div>
       <div class="fc-body">
-        <div class="field"><label id="invNoLabel">Quotation No.</label><input id="invNo" placeholder="เช่น QT-001 / INV-001" oninput="renderInvoice()"></div>
+        <div class="field"><label id="invNoLabel">Quotation No.</label><input id="invNo" placeholder="e.g. QT-001 / INV-001" oninput="renderInvoice()"></div>
         <div class="fr">
           <div class="field"><label>Issue Date</label><input type="date" id="invDate" onchange="updateDue();renderInvoice()"></div>
           <div class="field"><label>Due Date (+60 days)</label>
@@ -1493,7 +1493,7 @@ body{font-family:'Sarabun',sans-serif;background:#eef2f7;color:#1a1a2e;min-heigh
         <div class="fr">
           <div class="field"><label>Nickname</label><input id="infNick" placeholder="Nickname" oninput="renderInvoice()"></div>
           <div class="field"><label>Platform</label>
-            <select id="infPlatform" onchange="handleOtherSelect('infPlatform','infPlatformOther');renderInvoice()"><option value="">เลือก</option><option>Instagram</option><option>TikTok</option><option>YouTube</option><option>Facebook</option><option>X (Twitter)</option><option>Lemon8</option><option>Shopee Live</option><option>Lazada Live</option><option>Konvy Community</option><option value="อื่นๆ">อื่นๆ</option></select>
+            <select id="infPlatform" onchange="handleOtherSelect('infPlatform','infPlatformOther');renderInvoice()"><option value="">Select</option><option>Instagram</option><option>TikTok</option><option>YouTube</option><option>Facebook</option><option>X (Twitter)</option><option>Lemon8</option><option>Shopee Live</option><option>Lazada Live</option><option>Konvy Community</option><option value="Others">Others</option></select>
             <input id="infPlatformOther" placeholder="Specify platform..." style="display:none;margin-top:5px;border:1.5px solid #dde3ea;border-radius:6px;padding:8px 11px;font-size:.85rem;font-family:Sarabun,sans-serif;width:100%;outline:none" oninput="renderInvoice()">
           </div>
         </div>
@@ -1502,7 +1502,7 @@ body{font-family:'Sarabun',sans-serif;background:#eef2f7;color:#1a1a2e;min-heigh
           <div class="field"><label>Email</label><input id="infEmail" placeholder="email@" oninput="renderInvoice()"></div>
         </div>
         <div class="field"><label>ID Card No.</label><input id="infCardNo" placeholder="x-xxxx-xxxxx-xx-x" oninput="calcTotal();renderInvoice()"></div>
-        <div class="field"><label>Address</label><textarea id="infAddr" rows="2" placeholder="Address as per ID card" oninput="renderInvoice()"></textarea></div>
+        <div class="field"><label>ที่อยู่</label><textarea id="infAddr" rows="2" placeholder="Address as per ID card" oninput="renderInvoice()"></textarea></div>
       </div>
     </div>
     <div class="fc" id="fcPaymentGroup" style="display:none">
@@ -1517,9 +1517,9 @@ body{font-family:'Sarabun',sans-serif;background:#eef2f7;color:#1a1a2e;min-heigh
           </div>
           <input type="hidden" id="payType" value="cash">
         </div>
-        <!-- Barter: Product Value -->
+        <!-- Barter: มูลค่าสินค้า -->
         <div id="barterBox" style="display:none;margin-top:8px;background:#fff8f0;border:1.5px solid #f97316;border-radius:8px;padding:10px 12px">
-          <div style="font-size:.72rem;font-weight:700;color:#c2410c;margin-bottom:6px">📦 รายละเอียดสินค้า Barter</div>
+          <div style="font-size:.72rem;font-weight:700;color:#c2410c;margin-bottom:6px">📦 Barter Product Details</div>
           <div class="field">
             <label>Job / Product Reviewed</label>
             <input id="barterJobDesc" placeholder="e.g. Review Cream ABC / Unboxing Serum XYZ" oninput="updateBarterSummary();renderInvoice()"
@@ -1534,12 +1534,12 @@ body{font-family:'Sarabun',sans-serif;background:#eef2f7;color:#1a1a2e;min-heigh
             <input id="barterValue" type="number" placeholder="0.00" oninput="updateBarterSummary();renderInvoice()" style="border:1.5px solid #fed7aa;border-radius:6px;padding:8px 11px;font-size:.85rem;font-family:Sarabun,sans-serif;width:100%;outline:none;box-sizing:border-box">
           </div>
           <div style="font-size:.7rem;color:#9a6040;margin-top:6px;background:#fef3e8;border-radius:5px;padding:5px 8px">
-            💡 Product ValueจะแสดงในItemค่าตอบแทนโดยอัตโนมัติ
+            💡 Product value will appear in the compensation list automatically
           </div>
         </div>
         <!-- KONVY Credit Box -->
         <div id="creditBox" class="credit-box">
-          <div style="font-size:.72rem;font-weight:700;color:#f73174;margin-bottom:8px">🎁 ข้อมูล KONVY Credit</div>
+          <div style="font-size:.72rem;font-weight:700;color:#f73174;margin-bottom:8px">🎁 KONVY Credit Info</div>
           <div class="field">
             <label>Job / Product Reviewed</label>
             <input id="creditJobDesc" placeholder="e.g. Review Cream ABC / Unboxing Serum XYZ" oninput="updateCreditSummary();renderInvoice()"
@@ -1551,23 +1551,23 @@ body{font-family:'Sarabun',sans-serif;background:#eef2f7;color:#1a1a2e;min-heigh
               style="border:1.5px solid #f7c0d8;border-radius:6px;padding:8px 11px;font-size:.85rem;font-family:Sarabun,sans-serif;width:100%;outline:none;box-sizing:border-box">
           </div>
           <div class="field" style="margin-top:6px">
-            <label>Credit Value (บาท) <span class="req">*</span></label>
+            <label>มูลค่า Credit (บาท) <span class="req">*</span></label>
             <input id="creditValue" type="number" placeholder="0.00" oninput="renderInvoice()"
               style="border:1.5px solid #f7c0d8;border-radius:6px;padding:8px 11px;font-size:.85rem;font-family:Sarabun,sans-serif;width:100%;outline:none;box-sizing:border-box">
           </div>
           <div class="field" style="margin-top:6px">
             <label>📸 Screenshot of Member Barcode</label>
             <div style="font-size:.65rem;color:#c0609a;background:#fff0f7;border-radius:5px;padding:5px 8px;margin-bottom:5px;line-height:1.5">
-              แนบ Screenshot หน้า Member Card (มีบาร์โค้ด) เพื่อยืนยัน ID ป้องกันโอนผิด
+              Attach a screenshot of the Member Card (with barcode) to verify ID and prevent transfer errors
             </div>
             <div class="uz"><input type="file" accept="image/*" onchange="handleFiles(this,'credit')">
               <div class="uz-i">🎁</div>
-              <div class="uz-t"><strong>คลิก/ลาก หรือถ่ายภาพ</strong></div>
+              <div class="uz-t"><strong>Click / Drag or Take Photo</strong></div>
             </div>
             <div class="chips" id="preview-credit"></div>
           </div>
           <div style="font-size:.7rem;color:#c0609a;margin-top:6px;background:#fff0f7;border-radius:5px;padding:5px 8px">
-            💡 KONVY จะโอน Credit เข้า App ตาม Member ID ที่ระบุ กรุณาตรวจสอบให้ถูกต้อง
+            💡 KONVY will transfer Credit to the App per the specified Member ID. Please verify
           </div>
         </div>
       </div>
@@ -1576,7 +1576,7 @@ body{font-family:'Sarabun',sans-serif;background:#eef2f7;color:#1a1a2e;min-heigh
       <div class="fc-head" style="background:#f73174;color:#fff"><span>💳 Bank Account</span></div>
       <div class="fc-body">
         <div class="field"><label>Bank <span class="req">*</span></label>
-          <select id="bankName" onchange="handleOtherSelect('bankName','bankNameOther');renderInvoice()"><option value="">-- เลือก --</option><option>KBANK - Bankกสิกรไทย</option><option>SCB - Bankไทยพาณิชย์</option><option>BBL - Bankกรุงเทพ</option><option>KTB - Bankกรุงไทย</option><option>BAY - Bankกรุงศรีอยุธยา</option><option>TTB - Bankทหารไทยธนชาต</option><option>GSB - Bankออมสิน</option><option>UOBT - Bankยูโอบี</option><option>KKP - Bankเกียรตินาคินภัทร</option><option>CIMBT - Bankซีไอเอ็มบี ไทย</option><option>TISCOB - Bankทิสโก้</option><option>LH BANK - Bankแลนด์ แอนด์ เฮ้าส์</option><option>SCBT - Bankสแตนดาร์ดชาร์เตอร์ด (ไทย)</option><option>CITI - Bankซิตี้แบงก์</option><option>HSBC - Bankฮ่องกงและเซี่ยงไฮ้</option><option value="อื่นๆ">อื่นๆ</option></select>
+          <select id="bankName" onchange="handleOtherSelect('bankName','bankNameOther');renderInvoice()"><option value="">-- Select --</option><option>KBANK - Kasikorn Bank</option><option>SCB - Siam Commercial Bank</option><option>BBL - Bangkok Bank</option><option>KTB - Krungthai Bank</option><option>BAY - Bank of Ayudhya</option><option>TTB - TMBThanachart Bank</option><option>GSB - Government Savings Bank</option><option>UOBT - UOB Thailand</option><option>KKP - Kiatnakin Phatra Bank</option><option>CIMBT - CIMB Thai Bank</option><option>TISCOB - TISCO Bank</option><option>LH BANK - Land and Houses Bank</option><option>SCBT - Standard Chartered Bank Thailand</option><option>CITI - Citibank</option><option>HSBC - Hongkong & Shanghai Bank</option><option value="Others">Others</option></select>
           <input id="bankNameOther" placeholder="ระบุชื่อBank..." style="display:none;margin-top:5px;border:1.5px solid #dde3ea;border-radius:6px;padding:8px 11px;font-size:.85rem;font-family:Sarabun,sans-serif;width:100%;outline:none" oninput="renderInvoice()">
         </div>
         <div class="fr">
@@ -1608,8 +1608,8 @@ body{font-family:'Sarabun',sans-serif;background:#eef2f7;color:#1a1a2e;min-heigh
         <button class="btn-ar" type="button" onclick="addRow()">+ Add Item</button>
         <div class="sum-s">
           <div class="sum-sr"><span class="sum-sl">Subtotal</span><span class="sum-sv" id="sumSub">฿0.00</span></div>
-          <div class="sum-sr" id="whtRow"><span class="sum-sl">Withholding Tax</span><span class="sum-sv" style="color:#e05050" id="sumWht">-฿0.00</span></div>
-          <div class="sum-sr"><span class="sum-sl">VAT<select class="sum-ssel" id="vatSel" onchange="calcTotal();renderInvoice()" title="เลือก 7% = ผู้ประกอบการจด VAT (ไม่หัก WHT)"><option value="0" selected>None</option><option value="7">7% (VAT Reg.)</option></select></span><span class="sum-sv" id="sumVat">฿0.00</span></div>
+          <div class="sum-sr" id="whtRow"><span class="sum-sl">WHT</span><span class="sum-sv" style="color:#e05050" id="sumWht">-฿0.00</span></div>
+          <div class="sum-sr"><span class="sum-sl">VAT<select class="sum-ssel" id="vatSel" onchange="calcTotal();renderInvoice()" title="Select 7% = VAT-registered (no WHT deduction)"><option value="0" selected>None</option><option value="7">7% (VAT Reg.)</option></select></span><span class="sum-sv" id="sumVat">฿0.00</span></div>
           <div class="sum-tot"><span class="sum-tot-l">Net Receivable</span><span class="sum-tot-v" id="sumTotal">฿0.00</span></div>
         </div>
         <div class="field" style="margin-top:6px"><label>Remarks</label><textarea id="invNote" rows="2" placeholder="Remarks..." oninput="renderInvoice()"></textarea></div>
@@ -1620,15 +1620,15 @@ body{font-family:'Sarabun',sans-serif;background:#eef2f7;color:#1a1a2e;min-heigh
       <div class="fc-body">
         <div style="font-size:.68rem;color:#8a96a3;font-weight:700;margin-bottom:3px">🪪 ID Card</div>
         <div style="font-size:.64rem;color:#aab4be;line-height:1.5;margin-bottom:6px;background:#f8fafc;border-radius:5px;padding:5px 8px">
-          📸 ถ่ายจากบัตรตัวจริงได้เลยค่ะ — ระบบจะแปลงเป็นสำเนาขาว-ดำ และบันทึกเป็น PDF ให้อัตโนมัติ
+          📸 You can photograph the actual ID card — the system will convert it to black & white and save as PDF automatically
         </div>
-        <div class="uz"><input type="file" accept="image/*,.pdf" multiple onchange="handleFiles(this,'id')"><div class="uz-i">🪪</div><div class="uz-t"><strong>คลิก/ลาก หรือถ่ายภาพ</strong></div></div>
+        <div class="uz"><input type="file" accept="image/*,.pdf" multiple onchange="handleFiles(this,'id')"><div class="uz-i">🪪</div><div class="uz-t"><strong>Click / Drag or Take Photo</strong></div></div>
         <div class="chips" id="preview-id"></div>
         <div style="font-size:.68rem;color:#8a96a3;font-weight:700;margin:8px 0 3px">🏦 Bank Book</div>
         <div style="font-size:.64rem;color:#aab4be;line-height:1.5;margin-bottom:6px;background:#f8fafc;border-radius:5px;padding:5px 8px">
-          📸 ถ่ายจากสมุดบัญชีตัวจริงได้เลยค่ะ — ระบบจะแปลงเป็นสำเนาขาว-ดำ และบันทึกเป็น PDF ให้อัตโนมัติ
+          📸 You can photograph the actual bank book — the system will convert it to black & white and save as PDF automatically
         </div>
-        <div class="uz"><input type="file" accept="image/*,.pdf" multiple onchange="handleFiles(this,'book')"><div class="uz-i">🏦</div><div class="uz-t"><strong>คลิก/ลาก หรือถ่ายภาพ</strong></div></div>
+        <div class="uz"><input type="file" accept="image/*,.pdf" multiple onchange="handleFiles(this,'book')"><div class="uz-i">🏦</div><div class="uz-t"><strong>Click / Drag or Take Photo</strong></div></div>
         <div class="chips" id="preview-book"></div>
       </div>
     </div>
@@ -1643,9 +1643,9 @@ body{font-family:'Sarabun',sans-serif;background:#eef2f7;color:#1a1a2e;min-heigh
     <div class="fc" id="fcPostDateGroup" style="display:block">
       <div class="fc-head" style="background:#f73174;color:#fff"><span>📅 Post Schedule</span></div>
       <div class="fc-body">
-        <div style="font-size:.72rem;color:#8a96a3;margin-bottom:8px">Enter planned post date to record in contract</div>
+        <div style="font-size:.72rem;color:#8a96a3;margin-bottom:8px">Enter the planned post date to record in the contract</div>
         <div class="field">
-          <label>planned post date <span class="req">*</span></label>
+          <label>Planned Post Date <span class="req">*</span></label>
           <input type="date" id="quotPostDate" onchange="renderInvoice()">
         </div>
         <div class="field" style="margin-top:4px">
@@ -1660,7 +1660,7 @@ body{font-family:'Sarabun',sans-serif;background:#eef2f7;color:#1a1a2e;min-heigh
             <option>Facebook</option><option>X (Twitter)</option><option>Lemon8</option>
             <option>Shopee Live</option><option>Lazada Live</option>
             <option>Konvy Community</option>
-            <option value="อื่นๆ">อื่นๆ</option>
+            <option value="Others">Others</option>
           </select>
           <input id="quotPostPlatformOther" placeholder="Specify platform..." style="display:none;margin-top:5px;border:1.5px solid #dde3ea;border-radius:6px;padding:8px 11px;font-size:.85rem;font-family:Sarabun,sans-serif;width:100%;outline:none;box-sizing:border-box" oninput="renderInvoice()">
         </div>
@@ -1699,7 +1699,7 @@ body{font-family:'Sarabun',sans-serif;background:#eef2f7;color:#1a1a2e;min-heigh
     </div>
   </div>
   <div class="preview-area">
-  <div class="prev-lbl" style="display:flex;align-items:center;gap:8px">ตัวอย่างเอกสาร (อัปเดตทันที)<span id="quotBadge" style="display:none">📄 +Quotation</span></div>
+  <div class="prev-lbl" style="display:flex;align-items:center;gap:8px">Document Preview (Live)<span id="quotBadge" style="display:none">📄 +Quotation</span></div>
     <div class="inv-wrap" id="invoiceWrap"></div>
     <div id="quotDividerDesktop" style="display:none !important;max-width:794px;margin:12px auto 0;background:#1a2535;border-radius:10px 10px 0 0;padding:8px 20px;align-items:center;gap:8px">
       <span style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55)">หน้า 2 — Quotation</span>
@@ -1859,7 +1859,9 @@ function calcTotal(){
     if(whtRow) whtRow.style.display = 'none';
     // เปลี่ยน label Net Receivable
     var totLbl = document.querySelector('.sum-tot-l');
-    if(totLbl) totLbl.textContent = currentPayType==='credit' ? 'Credit Value' : 'Product Value';
+    var _cvLbl = _lblLang==='en'?'Credit Value':_lblLang==='zh'?'积分价值':'มูลค่า Credit';
+    var _pvLbl = _lblLang==='en'?'Product Value':_lblLang==='zh'?'商品价值':'มูลค่าสินค้า';
+    if(totLbl) totLbl.textContent = currentPayType==='credit' ? _cvLbl : _pvLbl;
     var vatSel = document.getElementById('vatSel');
     if(vatSel) vatSel.closest('.sum-sr').style.display = 'none';
     var subRow = document.getElementById('sumSub')?.closest('.sum-sr');
@@ -1872,7 +1874,7 @@ function calcTotal(){
     if(vatSel2) vatSel2.closest('.sum-sr').style.display = '';
     var subRow2 = document.getElementById('sumSub')?.closest('.sum-sr');
     if(subRow2) subRow2.style.display = '';
-    // WHT ปกติ — ถ้าเลือก VAT 7% แปลว่าจด VAT แล้ว ไม่ต้องหัก WHT
+    // WHT ปกติ — ถ้าSelect VAT 7% แปลว่าจด VAT แล้ว ไม่ต้องหัก WHT
     var cardNo=(document.getElementById('infCardNo')?document.getElementById('infCardNo').value:'').replace(/[-\s]/g,'');
     var isThai=/^\d{13}$/.test(cardNo);
     var hasVat = vatPct > 0;
@@ -1919,19 +1921,54 @@ function getItems(){
 
 
 var currentDocType = 'quot'; // default
+var _lblLang="en";
+function patchBilingual(el){
+  if(!el||_lblLang==="th") return;
+  var h=el.innerHTML;
+  h=h.replace(/ข้อตกลงการใช้ทรัพย์สิน \(Usage Rights\)(?! \/)/g,"ข้อตกลงการใช้ทรัพย์สิน (Usage Rights) / Usage Rights Agreement");
+  h=h.replace(/ระยะเวลายิงโฆษณา \(Paid Ads\)(?! \/)/g,"ระยะเวลายิงโฆษณา (Paid Ads) / Paid Ads Duration");
+  h=h.replace(/บัญชีสำหรับรับชำระเงิน(?! \/)/g,"บัญชีสำหรับรับชำระเงิน / Bank Account");
+  h=h.replace(/Asset Usage Duration(?! \/)/g,"Asset Usage Duration / Asset Duration");
+  h=h.replace(/เงื่อนไขการชำระเงิน(?! \/)/g,"เงื่อนไขการชำระเงิน / Payment Terms");
+  h=h.replace(/สิทธิ์ดัดแปลง Asset(?! \/)/g,"สิทธิ์ดัดแปลง Asset / Modification");
+  h=h.replace(/สิทธิ์การใช้ Asset(?! \/)/g,"สิทธิ์การใช้ Asset / Asset Rights");
+  h=h.replace(/ข้อมูลผู้รับเงิน(?! \/)/g,"ข้อมูลผู้รับเงิน / Payee Info");
+  h=h.replace(/VAT(?! \/)/g,"VAT / VAT");
+  h=h.replace(/อนุญาตให้ใช้ฟรี(?! \/)/g,"อนุญาตให้ใช้ฟรี / Free to Use");
+  h=h.replace(/ยอดที่จะได้รับ(?! \/)/g,"ยอดที่จะได้รับ / Net Amount");
+  h=h.replace(/ผู้อนุมัติจ่าย(?! \/)/g,"ผู้อนุมัติจ่าย / Approver");
+  h=h.replace(/WHT(?! \/)/g,"WHT / WHT");
+  h=h.replace(/มูลค่า Credit(?! \/)/g,"มูลค่า Credit / Credit Value");
+  h=h.replace(/มูลค่าสินค้า(?! \/)/g,"มูลค่าสินค้า / Product Value");
+  h=h.replace(/ผู้รับเอกสาร(?! \/)/g,"ผู้รับเอกสาร / Recipient");
+  h=h.replace(/กำหนดโพสต์(?! \/)/g,"กำหนดโพสต์ / Post Date");
+  h=h.replace(/ชำระภายใน(?! \/)/g,"ชำระภายใน / Payment within");
+  h=h.replace(/Issue Date(?! \/)/g,"Issue Date / Issue Date");
+  h=h.replace(/กำหนดชำระ(?! \/)/g,"กำหนดชำระ / Due Date");
+  h=h.replace(/ใช้ได้ถึง(?! \/)/g,"ใช้ได้ถึง / Valid Until");
+  h=h.replace(/Not Permitted(?! \/)/g,"Not Permitted / Not Permitted");
+  h=h.replace(/Unlimited(?! \/)/g,"Unlimited / Unlimited");
+  h=h.replace(/เลขบัตร(?! \/)/g,"เลขบัตร / ID No.");
+  h=h.replace(/Subtotal(?! \/)/g,"Subtotal / Subtotal");
+  h=h.replace(/เลขที่(?! \/)/g,"เลขที่ / No.");
+  h=h.replace(/แคมเปญ(?! \/)/g,"แคมเปญ / Campaign");
+  h=h.replace(/โทร(?! \/)/g,"โทร / Tel");
+  el.innerHTML=h;
+}
 function renderInvoice(){
   var c=calcTotal(), sub=c.sub, wht=c.wht, vat=c.vat, total=c.total, whtPct=c.whtPct, vatPct=c.vatPct;
   var items=getItems();
   var t=currentTpl;
-  var iName=v('infName')||'ชื่ออินฟลูเอนเซอร์';
+  var _nameHolder=_lblLang==='en'?'Influencer Name':_lblLang==='zh'?'网红姓名':'ชื่ออินฟลูเอนเซอร์';
+  var iName=v('infName')||_nameHolder;
   var iNick=v('infNick'), iPad=v('infAddr'), iPhone=v('infPhone');
   var iEmail=v('infEmail'), iCard=v('infCardNo');
   var proj=v('invProject'), note=v('invNote');
-  var bank=v('bankName')==='อื่นๆ'?v('bankNameOther'):v('bankName'), bAcc=v('bankAccName'), bNo=v('bankAccNo'), bBr=v('bankBranch');
+  var bank=v('bankName')==='Others'?v('bankNameOther'):v('bankName'), bAcc=v('bankAccName'), bNo=v('bankAccNo'), bBr=v('bankBranch');
   var invNo=v('invNo')||'–', invDate=fmtDate(v('invDate')), invDue=fmtDate(window._invDueRaw||'');
   var _dtype = (typeof currentDocType!=='undefined') ? currentDocType : 'quot';
   var isQuot = (_dtype === 'quot');
-  var docMainTitle = isQuot ? 'Quotation' : 'Invoice';
+  var docMainTitle = isQuot ? 'ใบเสนอราคา / Quotation' : 'ใบแจ้งหนี้ / Invoice';
   var docSubTitle  = isQuot ? 'QUOTATION · Quotation' : 'INVOICE · Invoice';
   var docNoPrefix = isQuot ? invNo.replace(/^INV-/i,'QT-') : invNo.replace(/^QT-/i,'INV-');
   var coAddr=CO.addr.replace(/\n/g,'<br>');
@@ -1948,7 +1985,18 @@ function renderInvoice(){
       '<td class="ta">฿'+fmt(it.qty*it.price)+'</td></tr>';
   }).join('');
 
-  var tHead='<thead><tr><th class="tn">#</th><th class="td" style="text-align:left">'+'Item'+'</th><th class="tq">'+'Qty'+'</th><th class="tp">'+'Unit Price'+'</th><th class="ta">'+'Qtyเงิน'+'</th></tr></thead>';
+  // column headers by language — hardcoded to prevent translation collision
+  var _thMap={
+    th:{item:'__THITEM__',qty:'__THQTY__',price:'__THPRICE__',amount:'__THAMOUNT__'},
+    en:{item:'Item',qty:'Qty',price:'Unit Price',amount:'Amount'},
+    zh:{item:'项目',qty:'数量',price:'单价',amount:'金额'}
+  };
+  // restore TH labels at runtime
+  if(_thMap.th.item==='__THITEM__'){
+    _thMap.th={item:'Item',qty:'Qty',price:'Unit Price',amount:'Qtyเงิน'};
+  }
+  var _th=_thMap[typeof _lblLang!=='undefined'&&_thMap[_lblLang]?_lblLang:'th'];
+  var tHead='<thead><tr><th class="tn">#</th><th class="td" style="text-align:left">'+_th.item+'</th><th class="tq">'+_th.qty+'</th><th class="tp">'+_th.price+'</th><th class="ta">'+_th.amount+'</th></tr></thead>';
   var tHeadReceipt='<thead><tr><th class="tn">#</th><th class="td" style="text-align:left">'+'Item'+'</th><th class="tq">'+'Qty'+'</th><th class="tp">'+'Unit Price'+'</th><th class="ta">'+'Qtyเงิน'+'</th></tr></thead>';
   var tHeadReport='<thead><tr><th class="tn">ลำดับ</th><th class="td" style="text-align:left">คำอธิบาย</th><th class="tq">หน่วย</th><th class="tp">ต่อหน่วย</th><th class="ta">Totalเงิน</th></tr></thead>';
 
@@ -1976,20 +2024,22 @@ function renderInvoice(){
 
   function sumBox(){
     var _isCashless = (typeof currentPayType!=='undefined') && (currentPayType==='barter'||currentPayType==='credit');
-    var _totLabel = _isCashless ? (currentPayType==='credit'?'Credit Value':'Product Value') : 'ยอดที่จะได้รับ';
+    var _totLabel = _isCashless ? (currentPayType==='credit'?'มูลค่า Credit':'มูลค่าสินค้า') : 'ยอดที่จะได้รับ';
     if(_isCashless){
       return '<div class="sum-r tot"><span>'+_totLabel+'</span><span>฿'+fmt(total)+'</span></div>';
     }
     return '<div class="sum-r"><span>'+'Subtotal'+'</span><span>฿'+fmt(sub)+'</span></div>'+
-      '<div class="sum-r"><span>'+'Withholding Tax'+' '+whtPct+'%</span><span>-฿'+fmt(wht)+'</span></div>'+
+      '<div class="sum-r"><span>'+'WHT'+' '+whtPct+'%</span><span>-฿'+fmt(wht)+'</span></div>'+
       '<div class="sum-r"><span>'+'VAT'+' '+vatPct+'%</span><span>฿'+fmt(vat)+'</span></div>'+
       '<div class="sum-r tot"><span>'+_totLabel+'</span><span>฿'+fmt(total)+'</span></div>';
   }
 
-  var partyFrom='<div class="uni-party"><div class="uni-party-label">'+'ผู้แจ้งหนี้ (ผู้รับเงิน)'+'</div>'+
+  var _payeeLabel=_lblLang==='en'?'PAYEE':_lblLang==='zh'?'收款方':'ผู้แจ้งหนี้ (ผู้รับเงิน)';
+  var partyFrom='<div class="uni-party"><div class="uni-party-label">'+_payeeLabel+'</div>'+
     '<div class="uni-party-name">'+iName+(iNick?' ('+iNick+')':'')+'</div>'+
     '<div class="uni-party-det">'+(iPad?iPad.replace(/\n/g,'<br>'):'')+(iPhone?'<br>'+'โทร'+': '+iPhone:'')+(iEmail?'<br>'+iEmail:'')+(iCard?'<br>'+'เลขบัตร'+': '+iCard:'')+'</div></div>';
-  var partyTo='<div class="uni-party"><div class="uni-party-label">'+'ผู้จ่ายเงิน'+'</div>'+
+  var _payerLabel=_lblLang==='en'?'PAYER':_lblLang==='zh'?'付款方':'ผู้จ่ายเงิน';
+  var partyTo='<div class="uni-party"><div class="uni-party-label">'+_payerLabel+'</div>'+
     '<div class="uni-party-name">'+CO.name+'</div>'+
     '<div class="uni-party-det">'+coAddr+'<br>'+CO.taxLabel+': '+CO.tax+'</div></div>';
 
@@ -2003,12 +2053,12 @@ function renderInvoice(){
     var pubDateVal  = (document.getElementById('quotPostDate')||{}).value||'';
     var pubTimeVal  = (document.getElementById('quotPostTime')||{}).value||'';
     var pubPlatVal  = (document.getElementById('quotPostPlatform')||{}).value||'';
-    if(pubPlatVal==='อื่นๆ') pubPlatVal = (document.getElementById('quotPostPlatformOther')||{}).value||'อื่นๆ';
+    if(pubPlatVal==='Others') pubPlatVal = (document.getElementById('quotPostPlatformOther')||{}).value||'Others';
     var assetType   = (typeof tcUsageType!=='undefined') ? tcUsageType : 'free';
-    var assetLabel  = assetType==='paid' ? 'Charge Usage Feeเพิ่มเติม' : assetType==='none' ? 'Not Permitted' : 'Free to Use';
+    var assetLabel  = assetType==='paid' ? 'คิดค่าใช้สิทธิ์เพิ่มเติม' : assetType==='none' ? 'Not Permitted' : 'อนุญาตให้ใช้ฟรี';
     var canModify   = (document.getElementById('tcCanModify')||{}).value||'ได้';
     var assetDur    = (document.getElementById('tcAssetDuration')||{}).value||'Unlimited';
-    var adsDur      = typeof getAdsDuration==='function' ? getAdsDuration() : ((document.getElementById('tcAdsDuration')||{}).value||'1 ปี');
+    var adsDur      = typeof getAdsDuration==='function' ? getAdsDuration() : ((document.getElementById('tcAdsDuration')||{}).value||'1 Year');
     var fee21       = (document.getElementById('tcFee21')||{}).value||'–';
     var fee22       = (document.getElementById('tcFee22')||{}).value||'–';
     var fee23       = (document.getElementById('tcFee23')||{}).value||'–';
@@ -2027,7 +2077,7 @@ function renderInvoice(){
   }
 
   var sigRow='<div class="sig-row-uni">'+
-    '<div class="sig-blk-uni"><div class="sig-space" style="display:flex;align-items:flex-end;justify-content:center;min-height:44px">'+sigImgHtml+'</div><div class="sig-line-uni"><div class="sig-name">'+iName+'</div><div class="sig-role">'+'ผู้แจ้งหนี้'+'</div></div></div>'+
+    '<div class="sig-blk-uni"><div class="sig-space" style="display:flex;align-items:flex-end;justify-content:center;min-height:44px">'+sigImgHtml+'</div><div class="sig-line-uni"><div class="sig-name">'+iName+'</div><div class="sig-role">'+(_lblLang==='en'?'Payee':_lblLang==='zh'?'收款方':'ผู้แจ้งหนี้')+'</div></div></div>'+
     '<div class="sig-blk-uni"><div class="sig-space"></div><div class="sig-line-uni"><div class="sig-name">&nbsp;</div><div class="sig-role">'+'ผู้รับเอกสาร'+'</div></div></div>'+
     '<div class="sig-blk-uni"><div class="sig-space"></div><div class="sig-line-uni"><div class="sig-name">&nbsp;</div><div class="sig-role">'+'ผู้อนุมัติจ่าย'+'</div></div></div>'+
     '</div>';
@@ -2121,7 +2171,7 @@ function renderInvoice(){
       '<div class="parties">'+partyFrom+partyTo+'</div>'+
       '<div class="table-wrap"><table>'+tHead+'<tbody>'+tRows+'</tbody></table></div>'+
       '<div class="sum-area"><div class="sum-box">'+sumBox()+'</div></div>'+
-      '<div class="bank-box"><div class="lbl">ข้อมูลBank Account</div><div class="bank-grid">'+bankGrid+'</div></div>'+
+      '<div class="bank-box"><div class="lbl">ข้อมูลบัญชีBank</div><div class="bank-grid">'+bankGrid+'</div></div>'+
       (note?'<div class="note-box">'+note+'</div>':'')+
       sigRow+'</div></div>';
   } else if(t==='t8'){
@@ -2147,7 +2197,7 @@ function renderInvoice(){
       '<div class="parties">'+partyFrom+partyTo+'</div>'+
       '<table>'+tHead+'<tbody>'+tRows+'</tbody></table>'+
       '<div class="sum-area"><div class="sum-box">'+sumBox()+'</div></div>'+
-      '<div class="bank-box"><div class="lbl">Bank Accountสำหรับรับเงิน</div><div class="bank-grid">'+bankGrid+'</div></div>'+
+      '<div class="bank-box"><div class="lbl">บัญชีBankสำหรับรับเงิน</div><div class="bank-grid">'+bankGrid+'</div></div>'+
       (note?'<div class="note-box">'+note+'</div>':'')+
       sigRow+'</div></div>';
   } else if(t==='t10'){
@@ -2166,7 +2216,7 @@ function renderInvoice(){
       '<div class="t11-title"><div class="top-doc-sub">'+docSubTitle+'</div><div class="top-doc">'+docMainTitle+'</div></div>'+
       '<div class="top"><div class="top-right" style="padding:18px 20px;border-left:1px solid #1a1a2e;flex:1">'+
       '<div class="top-meta-grid">'+
-      '<span class="mk">Document No.:</span><span class="mv">'+docNoPrefix+'</span>'+
+      '<span class="mk">เลขที่เอกสาร:</span><span class="mv">'+docNoPrefix+'</span>'+
       '<span class="mk">'+'Issue Date'+':</span><span class="mv">'+invDate+'</span>'+
       '<span class="mk">'+'กำหนดชำระ'+':</span><span class="mv">'+invDue+'</span>'+
       (proj?'<span class="mk">แคมเปญ:</span><span class="mv">'+proj+'</span>':'')+
@@ -2222,7 +2272,7 @@ function renderInvoice(){
       '<div class="info-row">'+
       '<div class="info-cell"><div class="ic-lbl">'+'ผู้แจ้งหนี้'+'</div><div class="ic-val">'+iName+'</div><div class="ic-det">'+(iPad||'').replace(/\n/g,' ')+(iPhone?' · '+iPhone:'')+(iEmail?'<br>'+iEmail:'')+(iCard?'<br>'+'เลขบัตร'+': '+iCard:'')+'</div></div>'+
       '<div class="info-cell"><div class="ic-lbl">'+'ผู้จ่ายเงิน'+'</div><div class="ic-val">'+CO.name+'</div><div class="ic-det">'+CO.addr.replace(/\n/g,' ')+'</div></div>'+
-      '<div class="info-cell"><div class="ic-lbl">Bank Account</div><div class="ic-val">'+(bank||'–')+'</div><div class="ic-det">'+(bAcc||'–')+'<br>Account No.: '+(bNo||'–')+(bBr?' · '+bBr:'')+'</div></div></div>'+
+      '<div class="info-cell"><div class="ic-lbl">บัญชีBank</div><div class="ic-val">'+(bank||'–')+'</div><div class="ic-det">'+(bAcc||'–')+'<br>Account No.: '+(bNo||'–')+(bBr?' · '+bBr:'')+'</div></div></div>'+
       '<div class="body"><div class="section-lbl">Itemแจ้งหนี้</div>'+
       '<table>'+tHeadReport+'<tbody>'+tRows+'</tbody></table>'+
       '<div class="sum-area"><div class="sum-box">'+sumBox()+'</div></div>'+
@@ -2248,7 +2298,7 @@ function renderInvoice(){
       '<div class="parties">'+partyFrom+partyTo+'</div>'+
       '<table>'+tHead+'<tbody>'+tRows+'</tbody></table>'+
       '<div class="sum-area"><div class="sum-box">'+sumBox()+'</div></div>'+
-      '<div class="bank-box"><div class="lbl">ข้อมูลBank Account</div><div class="bank-grid">'+bankGrid+'</div></div>'+
+      '<div class="bank-box"><div class="lbl">ข้อมูลบัญชีBank</div><div class="bank-grid">'+bankGrid+'</div></div>'+
       (note?'<div class="note-box">'+note+'</div>':'')+
       sigRow+'</div></div>';
   } else if(t==='t18'){
@@ -2279,7 +2329,7 @@ function renderInvoice(){
       '<div><div class="section-title">Itemและราคา</div>'+
       '<table>'+tHeadReport+'<tbody>'+tRows+'</tbody></table></div>'+
       '<div style="display:flex;justify-content:flex-end"><div class="sum-box">'+sumBox()+'</div></div>'+
-      '<div><div class="section-title">ข้อมูลBank Account</div><div class="section-content"><div class="bank-grid">'+bankGrid+'</div></div></div>'+
+      '<div><div class="section-title">ข้อมูลบัญชีBank</div><div class="section-content"><div class="bank-grid">'+bankGrid+'</div></div></div>'+
       (note?'<div><div class="section-title">Remarks</div><div class="note-box">'+note+'</div></div>':'')+
       sigRow+'</div></div>';
   }
@@ -2295,6 +2345,9 @@ function renderInvoice(){
   if(s2p) s2p.innerHTML=html;
   var ct=document.getElementById('captureTarget');
   if(ct) ct.innerHTML=html;
+  patchBilingual(document.getElementById('invoiceWrap'));
+  if(s2p) patchBilingual(s2p);
+  if(ct)  patchBilingual(ct);
   // ซ่อน bank-box ที่มี bankGrid ว่าง (isQuot)
   [document.getElementById('invoiceWrap'), s2p, ct].forEach(function(wrap){
     if(!wrap) return;
@@ -2340,7 +2393,7 @@ function renderQuotation(c, invoiceHtml){
     .replace(/ข้อมูลคู่สัญญา/g, 'คู่สัญญา')
     .replace(/Itemแจ้งหนี้/g, 'Itemงาน / บริการที่เสนอราคา')
     .replace(/Itemและราคา/g, 'Itemงาน / บริการที่เสนอราคา')
-    .replace(/ข้อมูลBank Account/g, 'บัญชีสำหรับชำระเงิน')
+    .replace(/ข้อมูลบัญชีBank/g, 'บัญชีสำหรับชำระเงิน')
     .replace(/ข้อมูลการโอนเงิน/g, 'บัญชีสำหรับชำระเงิน')
     .replace(/กำหนดชำระ/g, 'ใช้ได้ถึง')
     .replace(/เอกสารนี้ออกโดยอัตโนมัติโดยมีเจ้าหน้าที่จากระบบ KONVY KOL Invoice System/g, 'Quotationนี้มีผลภายใน 30 วัน นับจากIssue Date ราคาดังกล่าวเป็นค่าบริการรีวิวสินค้าผ่าน Social Media เท่านั้น');
@@ -2607,13 +2660,13 @@ function autoStamp(key, idx, cb){
     ctx.globalAlpha=0.68; ctx.fillStyle='#111';
     ctx.strokeStyle='rgba(255,255,255,0.8)'; ctx.lineWidth=2;
 
-    var line1='*ใช้สำหรับรับชำระค่าจ้างในการรีวิวสินค้า จาก บริษัท คอนวี่ อินเตอร์เนชั่นแนล จำกัด เท่านั้น*';
+    var line1='*For receiving payment from KONVY INTERNATIONAL COMPANY LIMITED เท่านั้น*';
     var fs1=fitFont(line1,imgW*0.028,true);
     ctx.font='bold '+fs1+'px "Dancing Script",Georgia,cursive';
     ctx.strokeText(line1,0,-lineH*0.65);
     ctx.fillText(line1,0,-lineH*0.65);
 
-    var line2='สำเนาถูกต้อง';
+    var line2='Certified Copy';
     var fs2=fitFont(line2,imgW*0.065,true);
     ctx.font='bold '+fs2+'px "Dancing Script",Georgia,cursive';
     ctx.strokeText(line2,0,lineH*0.5);
@@ -2782,7 +2835,7 @@ function renderPostEvidences(){
       var chipInfo=document.createElement('div');
       chipInfo.style.cssText='flex:1;min-width:0';
       chipInfo.innerHTML='<div style="font-size:.7rem;font-weight:700;color:#1a1a2e;margin-bottom:2px">รูปโพสต์ #'+(i+1)+'</div>'+
-        '<div style="font-size:.65rem;color:#4a90d9;cursor:pointer">คลิกรูปหรือกดเปลี่ยนเพื่อสลับรูป</div>';
+        '<div style="font-size:.65rem;color:#4a90d9;cursor:pointer">คลิกรูปorกดเปลี่ยนเพื่อสลับรูป</div>';
       // change button
       var changeBtn=document.createElement('label');
       changeBtn.style.cssText='display:inline-flex;align-items:center;gap:4px;background:#4a90d9;color:#fff;border:none;border-radius:5px;padding:4px 9px;font-size:.68rem;font-weight:700;cursor:pointer;white-space:nowrap;flex-shrink:0;font-family:Sarabun,sans-serif';
@@ -2819,7 +2872,7 @@ function renderPostEvidences(){
       iconEl.textContent='📸';
       var txtEl=document.createElement('div');
       txtEl.style.cssText='font-size:.72rem;color:#8a96a3;line-height:1.4;pointer-events:none';
-      txtEl.innerHTML='<strong style="color:#4a90d9">คลิก</strong> หรือลากรูปมาวาง<br><span style="font-size:.65rem">screenshot โพสต์</span>';
+      txtEl.innerHTML='<strong style="color:#4a90d9">คลิก</strong> orลากรูปมาวาง<br><span style="font-size:.65rem">screenshot โพสต์</span>';
       // Add file input LAST so it stays on top
       var fileInp=document.createElement('input');
       fileInp.type='file'; fileInp.accept='image/*';
@@ -2838,13 +2891,13 @@ function renderPostEvidences(){
     box.appendChild(platLabel);
     var platSel=document.createElement('select');
     platSel.style.cssText='border:1.5px solid #dde3ea;border-radius:6px;padding:7px 10px;font-size:.82rem;font-family:Sarabun,sans-serif;width:100%;margin-bottom:6px;outline:none';
-    var platOptions=['','Instagram','TikTok','YouTube','Facebook','X (Twitter)','Lemon8','Shopee Live','Lazada Live','Konvy Community','อื่นๆ'];
-    var knownPlatforms=['','Instagram','TikTok','YouTube','Facebook','X (Twitter)','Lemon8','Shopee Live','Lazada Live','Konvy Community','อื่นๆ'];
+    var platOptions=['','Instagram','TikTok','YouTube','Facebook','X (Twitter)','Lemon8','Shopee Live','Lazada Live','Konvy Community','Others'];
+    var knownPlatforms=['','Instagram','TikTok','YouTube','Facebook','X (Twitter)','Lemon8','Shopee Live','Lazada Live','Konvy Community','Others'];
     var isOther = p.platform && knownPlatforms.indexOf(p.platform)===-1;
     platOptions.forEach(function(pl){
       var opt=document.createElement('option');
-      opt.value=pl; opt.textContent=pl||'เลือก';
-      if(isOther ? pl==='อื่นๆ' : p.platform===pl) opt.selected=true;
+      opt.value=pl; opt.textContent=pl||'Select';
+      if(isOther ? pl==='Others' : p.platform===pl) opt.selected=true;
       platSel.appendChild(opt);
     });
     // Other input
@@ -2854,7 +2907,7 @@ function renderPostEvidences(){
     platOtherInp.value=isOther?p.platform:'';
     platOtherInp.oninput=(function(idx){return function(){ postEvidences[idx].platform=this.value; };})(i);
     platSel.onchange=(function(idx, otherInp){return function(){
-      if(this.value==='อื่นๆ'){
+      if(this.value==='Others'){
         otherInp.style.display='block';
         otherInp.focus();
         postEvidences[idx].platform='';
@@ -3068,7 +3121,7 @@ function goToStep(n){
     if(s1){ s1.style.color='rgba(255,255,255,.45)'; s1.querySelector('div').style.background='rgba(255,255,255,.15)'; s1.querySelector('div').style.color='rgba(255,255,255,.4)'; }
     if(s2){ s2.style.color='#f0c040'; }
     if(s2c){ s2c.style.background='#f0c040'; s2c.style.color='#1a1a2e'; }
-    // แสดงปุ่มEdit T&C เฉพาะ quot
+    // แสดงปุ่มแก้ไข T&C เฉพาะ quot
     var editTCBtn = document.getElementById('btnEditTC');
     if(editTCBtn) editTCBtn.style.display = (currentDocType==='quot') ? 'inline-flex' : 'none';
     renderInvoice(); renderUploadSummary(); window.scrollTo(0,0);
@@ -3078,7 +3131,7 @@ function goToStep(n){
 
 function savePDF(opts){
   if(!opts) opts={pages:null,pageMap:null};
-  if(!v('infName')){ alert('Please fill inFull Nameก่อนค่ะ'); return; }
+  if(!v('infName')){ alert('กรุณากรอกFull Nameก่อนค่ะ'); return; }
   var ov=document.getElementById('ov');
   ov.classList.add('show');
   document.getElementById('ovMsg').textContent='Creating PDF...';
@@ -3336,7 +3389,7 @@ function savePDF(opts){
 
     if(isLineBrowser){
       if(lineWarn){ lineWarn.style.display='block'; lbwDrawQR(); }
-      if(doneMsg) doneMsg.textContent='WeChat / DingTalk ไม่รองรับการดาวน์โหลด กรุณาเCloseใน Safari หรือ Chrome ค่ะ';
+      if(doneMsg) doneMsg.textContent='WeChat / DingTalk ไม่รองรับการดาวน์โหลด กรุณาเCloseใน Safari or Chrome ค่ะ';
     } else if(isIOS||isAndroid){
       // Mobile — popup share sheet ทันที
       if(shareBtn) shareBtn.style.display='block';
@@ -3382,7 +3435,7 @@ function openInBrowser(){
       // fallback: เClose safari โดยตรง
       window.open(url, '_blank');
       setTimeout(function(){
-        alert('กด ··· มุมขวาล่าง แล้วเลือก "เCloseใน Safari" ค่ะ');
+        alert('กด ··· มุมขวาล่าง แล้วSelect "เCloseใน Safari" ค่ะ');
       }, 500);
     }, 500);
   } else {
@@ -3401,7 +3454,7 @@ function doShare(){
   // สร้าง File object จาก blob — ทั้ง iOS Safari 15.1+ และ Android Chrome รองรับ
   var file=new File([blob], name, {type:'application/pdf'});
 
-  // share พร้อมไฟล์ตรงๆ — share sheet ขึ้น เลือก LINE ได้เลย
+  // share พร้อมไฟล์ตรงๆ — share sheet ขึ้น Select LINE ได้เลย
   navigator.share({
     title: 'Invoice KONVY KOL',
     files: [file]
@@ -3639,18 +3692,18 @@ function saveCertified(){
 
   var fs1=Math.max(imgW*0.028,9);
   ctx.font='bold '+fs1+'px Sarabun,sans-serif';
-  ctx.strokeText('*ใช้สำหรับรับชำระค่าจ้างในการรีวิวสินค้า จาก บริษัท คอนวี่ อินเตอร์เนชั่นแนล จำกัด เท่านั้น*',0,-lineH*2.2);
-  ctx.fillText('*ใช้สำหรับรับชำระค่าจ้างในการรีวิวสินค้า จาก บริษัท คอนวี่ อินเตอร์เนชั่นแนล จำกัด เท่านั้น*',0,-lineH*2.2);
+  ctx.strokeText('*For receiving payment from KONVY INTERNATIONAL COMPANY LIMITED เท่านั้น*',0,-lineH*2.2);
+  ctx.fillText('*For receiving payment from KONVY INTERNATIONAL COMPANY LIMITED เท่านั้น*',0,-lineH*2.2);
 
   var fs2=Math.max(imgW*0.025,8);
   ctx.font='bold '+fs2+'px Sarabun,sans-serif';
-  ctx.strokeText('จาก บริษัท คอนวี่ อินเตอร์เนชั่นแนล จำกัด',0,-lineH*0.9);
-  ctx.fillText('จาก บริษัท คอนวี่ อินเตอร์เนชั่นแนล จำกัด',0,-lineH*0.9);
+  ctx.strokeText('from KONVY INTERNATIONAL COMPANY LIMITED',0,-lineH*0.9);
+  ctx.fillText('from KONVY INTERNATIONAL COMPANY LIMITED',0,-lineH*0.9);
 
   var fs3=Math.max(imgW*0.052,14);
   ctx.font='bold '+fs3+'px Sarabun,sans-serif';
-  ctx.strokeText('สำเนาถูกต้อง',0,lineH*0.8);
-  ctx.fillText('สำเนาถูกต้อง',0,lineH*0.8);
+  ctx.strokeText('Certified Copy',0,lineH*0.8);
+  ctx.fillText('Certified Copy',0,lineH*0.8);
 
   var fs4=Math.max(imgW*0.025,8);
   ctx.font='bold '+fs4+'px Sarabun,sans-serif';
@@ -3682,7 +3735,7 @@ function saveCertified(){
     return;
   }
 
-  // Draw Signatureจาก canvas หรือรูปที่อัปโหลด
+  // Draw Signatureจาก canvas orรูปที่อัปโหลด
   var uploadPanel=document.getElementById('certUploadPanel');
   var isUploadMode=uploadPanel&&uploadPanel.style.display!=='none';
   if(isUploadMode && window._certUploadedSig){
@@ -3737,7 +3790,7 @@ function buildPageMap(){
 }
 
 function openPdfModal(){
-  if(!v('infName')){ alert('Please fill inFull Nameก่อนค่ะ'); return; }
+  if(!v('infName')){ alert('กรุณากรอกFull Nameก่อนค่ะ'); return; }
   var map=buildPageMap();
   window._pdfPageMap=map;
   var total=map.length;
@@ -3807,7 +3860,7 @@ function validatePdfRange(){
   if(!str.trim()){errEl.style.display='none';preEl.style.display='none';btn.disabled=true;return;}
   var pages=parsePageRange(str,total);
   if(!pages){
-    errEl.textContent='รูปแบบไม่ถูกต้อง หรือเลขหน้าเกินช่วง 1–'+total;
+    errEl.textContent='รูปแบบไม่ถูกต้อง orเลขหน้าเกินช่วง 1–'+total;
     errEl.style.display='block';preEl.style.display='none';btn.disabled=true;
   } else {
     errEl.style.display='none';
@@ -3827,7 +3880,7 @@ function getSelectedPages(){
 
 function confirmSavePDF(){
   var pages=getSelectedPages();
-  if(!pages||pages.length===0){alert('กรุณาเลือกหน้าที่ต้องการ');return;}
+  if(!pages||pages.length===0){alert('กรุณาSelectหน้าที่ต้องการ');return;}
   closePdfModal();
   savePDF({pages:pages,pageMap:window._pdfPageMap});
 }
@@ -3852,11 +3905,11 @@ function renderUploadSummary(){
   if(sigData){
     sigHtml='<img class="us-sig" src="'+sigData+'">';
   } else {
-    sigHtml='<span class="us-empty">ยังNoneลายเซ็น</span>';
+    sigHtml='<span class="us-empty">No signature yet</span>';
   }
   sections.push({
     icon:'✍️', label:'ลายเซ็น',
-    count: sigData?1:0, countLabel: sigData?'มีแล้ว':null,
+    count: sigData?1:0, countLabel: sigData?'Done':null,
     body: sigHtml
   });
 
@@ -3871,7 +3924,7 @@ function renderUploadSummary(){
     count:files.id.length,
     body: files.id.length>0
       ? '<div class="us-thumbs">'+idThumbs+'</div>'
-      : '<span class="us-empty">ยังไม่ได้แนบ</span>'
+      : '<span class="us-empty">Not yet attached</span>'
   });
 
   // Book Bank
@@ -3885,7 +3938,7 @@ function renderUploadSummary(){
     count:files.book.length,
     body: files.book.length>0
       ? '<div class="us-thumbs">'+bookThumbs+'</div>'
-      : '<span class="us-empty">ยังไม่ได้แนบ</span>'
+      : '<span class="us-empty">Not yet attached</span>'
   });
 
   // Post Evidence
@@ -3928,12 +3981,12 @@ function renderUploadSummary(){
 }
 
 
-// Handle อื่นๆ select -> show/hide text input
+// Handle Others select -> show/hide text input
 function handleOtherSelect(selId, inputId){
   var sel=document.getElementById(selId);
   var inp=document.getElementById(inputId);
   if(!sel||!inp) return;
-  if(sel.value==='อื่นๆ'){
+  if(sel.value==='Others'){
     inp.style.display='block';
     inp.focus();
   } else {
@@ -4033,12 +4086,12 @@ function openTC(){
     if(qDate){
       var p = qDate.split('-');
       var fmt = p[2]+'/'+p[1]+'/'+p[0];
-      var platLabel = qPlat === 'อื่นๆ' ? qPlatO : qPlat;
+      var platLabel = qPlat === 'Others' ? qPlatO : qPlat;
       dispEl.textContent = fmt + (qTime ? ' เวลา '+qTime : '') + (platLabel ? ' — '+platLabel : '');
       dispEl.style.color = '#1a1a2e';
       dispEl.style.fontStyle = 'normal';
     } else {
-      dispEl.textContent = 'ยังไม่ได้กรอกวันที่โพสต์ — กรุณากลับไปกรอกก่อนค่ะ';
+      dispEl.textContent = 'Post date not filled — please go back and fill it in first';
       dispEl.style.color = '#e05050';
       dispEl.style.fontStyle = 'italic';
     }
@@ -4102,13 +4155,13 @@ function setUsageType(type){
     // reset fee labels
     var el21 = document.getElementById('tcDetail21Fee');
     var el23 = document.getElementById('tcDetail23Fee');
-    if(el21) el21.textContent = '— ไม่คิดค่าใช้จ่ายเพิ่มเติม';
+    if(el21) el21.textContent = '— No additional charge';
     if(el23) el23.textContent = '';
     if(typeof updateAdsDurLabel==='function') updateAdsDurLabel();
     updateAdsDurLabel();
 
   } else if(type === 'paid'){
-    // Charge Usage Fee: แสดงทั้ง freeBox (ดัดแปลง+ระยะเวลา) + feeBox (ราคา), ซ่อน none
+    // คิดค่าใช้สิทธิ์: แสดงทั้ง freeBox (ดัดแปลง+ระยะเวลา) + feeBox (ราคา), ซ่อน none
     if(freeBox) freeBox.style.display = 'block';
     if(feeBox)  feeBox.style.display  = 'block';
     if(noneBox) noneBox.style.display = 'none';
@@ -4141,12 +4194,16 @@ function updateAdsDurLabel(){
   var dur = typeof getAdsDuration==='function' ? getAdsDuration() : '';
   var el = document.getElementById('tcDetail23Dur');
   if(!el) return;
-  if(!dur || dur==='Not Permitted'){
-    el.textContent = '— Not Permitted';
+  var _durLabel = (typeof _lblLang!=='undefined' && _lblLang==='en') ? 'Duration' :
+                  (typeof _lblLang!=='undefined' && _lblLang==='zh') ? '期限' : 'ระยะเวลา';
+  var _notPerm  = (typeof _lblLang!=='undefined' && _lblLang==='en') ? 'Not Permitted' :
+                  (typeof _lblLang!=='undefined' && _lblLang==='zh') ? '不允许' : 'Not Permitted';
+  if(!dur || dur==='Not Permitted' || dur==='Not Permitted' || dur==='不允许'){
+    el.textContent = '— '+_notPerm;
     el.style.color = '#dc2626';
     el.style.fontWeight = '700';
   } else {
-    el.textContent = '— ระยะเวลา: '+dur;
+    el.textContent = '— '+_durLabel+': '+dur;
     el.style.color = '#555';
     el.style.fontWeight = '600';
   }
@@ -4218,12 +4275,12 @@ function setDocType(type){
   if(btnI) btnI.classList.toggle('active', type==='inv');
   var glBtn = document.getElementById('btnGetLink');
   if(glBtn) glBtn.style.display = type==='quot' ? 'inline-flex' : 'none';
-  // อัปเดต label Document No.
+  // อัปเดต label เลขที่เอกสาร
   var lbl = document.getElementById('invNoLabel');
   if(lbl) lbl.textContent = type==='quot' ? 'Quotation No.' : 'Invoice No.';
   // อัปเดต placeholder
   var inp = document.getElementById('invNo');
-  if(inp) inp.placeholder = type==='quot' ? 'เช่น QT-001' : 'เช่น INV-001';
+  if(inp) inp.placeholder = type==='quot' ? 'e.g. QT-001' : 'e.g. INV-001';
   // อัปเดต label กำหนดชำระ/ใช้ได้ถึง
   document.querySelectorAll('.fc-body .field label').forEach(function(lb){
     var t = lb.textContent.trim();
@@ -4276,7 +4333,7 @@ function collectFormData(){
     infEmail:   (document.getElementById('infEmail')||{}).value||'',
     infCardNo:  (document.getElementById('infCardNo')||{}).value||'',
     infAddr:    (document.getElementById('infAddr')||{}).value||'',
-    // Bank Account — ไม่เก็บใน QT link (KOL กรอกเองตอนทำ INV)
+    // บัญชีBank — ไม่เก็บใน QT link (KOL กรอกเองตอนทำ INV)
     // Item
     items: (window.items||[]).map(function(it){ return {desc:it.desc,qty:it.qty,price:it.price}; }),
     invNote:    (document.getElementById('invNote')||{}).value||'',
@@ -4290,7 +4347,7 @@ function collectFormData(){
     tcUsage:    typeof tcUsageType!=='undefined' ? tcUsageType : 'free',
     tcCanMod:   (document.getElementById('tcCanModify')||{}).value||'ได้',
     tcAssetDur: (document.getElementById('tcAssetDuration')||{}).value||'Unlimited',
-    tcAdsDur:   typeof getAdsDuration==='function' ? getAdsDuration() : ((document.getElementById('tcAdsDuration')||{}).value||'1 ปี'),
+    tcAdsDur:   typeof getAdsDuration==='function' ? getAdsDuration() : ((document.getElementById('tcAdsDuration')||{}).value||'1 Year'),
     tcFee21:    (document.getElementById('tcFee21')||{}).value||'',
     tcFee23:    (document.getElementById('tcFee23')||{}).value||'',
     tcAcceptedAt: tcAccepted ? new Date().toISOString() : '',
@@ -4408,7 +4465,7 @@ function loadFromUrl(){
     setVal('quotPostTime',     data.quotPostTime);
     setVal('quotPostPlatform', data.quotPostPlatform);
     setVal('quotPostPlatformOther', data.quotPostPlatformOther);
-    if(data.quotPostPlatform==='อื่นๆ'){ var o=document.getElementById('quotPostPlatformOther'); if(o) o.style.display='block'; }
+    if(data.quotPostPlatform==='Others'){ var o=document.getElementById('quotPostPlatformOther'); if(o) o.style.display='block'; }
 
     // โหลด items
     if(data.items && data.items.length){
@@ -4464,10 +4521,10 @@ function loadFromUrl(){
       setTimeout(function(){
         var banner = document.createElement('div');
         banner.style.cssText = 'position:fixed;top:0;left:0;right:0;background:#2ecc71;color:#fff;text-align:center;padding:10px 16px;font-family:Sarabun,sans-serif;font-size:.85rem;font-weight:700;z-index:9999;box-shadow:0 2px 10px rgba(0,0,0,.2)';
-        banner.innerHTML = '✅ Data loaded from Quotation — now showing as <strong>Invoice</strong> Please fill in <strong>Bank Account</strong> and attach post evidence, ID card, and bank book';
+        banner.innerHTML = '✅ โหลดข้อมูลจากQuotationแล้ว — ตอนนี้เป็น <strong>Invoice</strong> กรุณากรอก <strong>บัญชีBank</strong> และแนบหลักฐานการโพสต์ บัตรประชาชน Bookbank ค่ะ';
         document.body.prepend(banner);
         setTimeout(function(){ banner.style.transition='opacity .5s'; banner.style.opacity='0'; setTimeout(function(){ banner.remove(); },600); }, 6000);
-        // highlight Bank Account
+        // highlight บัญชีBank
         var bankGrp = document.getElementById('fcBankGroup');
         if(bankGrp){
           bankGrp.style.boxShadow = '0 0 0 3px #f73174';
@@ -4522,7 +4579,7 @@ function setPayType(type){
     if(iBody) iBody.style.display = 'none';
     if(addBtn)addBtn.style.display= 'none';
     if(sumS)  sumS.style.display  = 'none';
-    if(iTitle) iTitle.textContent = '📦 Barter Product Value';
+    if(iTitle) iTitle.textContent = '📦 มูลค่าสินค้า Barter';
     // init items[0] ถ้ายังว่าง
     if(!window.items || window.items.length===0) window.items=[{id:Date.now(),desc:'',qty:1,price:0}];
     updateBarterSummary();
@@ -4533,7 +4590,7 @@ function setPayType(type){
     if(iBody) iBody.style.display = 'none';
     if(addBtn)addBtn.style.display= 'none';
     if(sumS)  sumS.style.display  = 'none';
-    if(iTitle) iTitle.textContent = '🎁 KONVY Credit Value';
+    if(iTitle) iTitle.textContent = '🎁 มูลค่า KONVY Credit';
     // init items[0] ถ้ายังว่าง
     if(!window.items || window.items.length===0) window.items=[{id:Date.now(),desc:'',qty:1,price:0}];
     updateCreditSummary();
@@ -4563,9 +4620,9 @@ function updateBarterSummary(){
   var title = document.getElementById('summaryBoxTitle');
   if(title){ title.textContent='📦 Itemสินค้า Barter'; title.style.color='#c2410c'; }
   var lbl = document.getElementById('barterSummaryLabel');
-  if(lbl) lbl.textContent = 'Product Value';
+  if(lbl) lbl.textContent = 'มูลค่าสินค้า';
   var vlbl = document.getElementById('summaryValueLabel');
-  if(vlbl) vlbl.textContent = 'Product Value (แทนเงินสด)';
+  if(vlbl) vlbl.textContent = 'มูลค่าสินค้า (แทนเงินสด)';
   var note = document.getElementById('summaryNote');
   if(note){ note.textContent='Noneการโอนเงินสด — ชำระด้วยสินค้าแทน'; note.style.color='#9a6040'; }
   var si = document.getElementById('barterSummaryItem');
@@ -4591,11 +4648,11 @@ function updateCreditSummary(){
   var box = document.getElementById('barterSummaryBox');
   if(box){ box.style.background='#fdf0f7'; box.style.border='1.5px solid #f73174'; }
   var title = document.getElementById('summaryBoxTitle');
-  if(title){ title.textContent='🎁 KONVY Credit Value'; title.style.color='#f73174'; }
+  if(title){ title.textContent='🎁 มูลค่า KONVY Credit'; title.style.color='#f73174'; }
   var lbl = document.getElementById('barterSummaryLabel');
   if(lbl) lbl.textContent = 'Member ID';
   var vlbl = document.getElementById('summaryValueLabel');
-  if(vlbl) vlbl.textContent = 'Credit Value (แทนเงินสด)';
+  if(vlbl) vlbl.textContent = 'มูลค่า Credit (แทนเงินสด)';
   var note = document.getElementById('summaryNote');
   if(note){ note.textContent='KONVY จะโอน Credit เข้า App ตาม Member ID ที่ระบุ'; note.style.color='#c0609a'; }
   var si = document.getElementById('barterSummaryItem');
@@ -4614,7 +4671,7 @@ function updateCreditSummary(){
 }
 
 function syncBarterToItems(){
-  // ถ้ายังNoneItem หรือItemแรกว่าง → เติม barter อัตโนมัติ
+  // ถ้ายังNoneItem orItemแรกว่าง → เติม barter อัตโนมัติ
   var itemName  = (document.getElementById('barterItem')||{}).value||'';
   var itemValue = parseFloat((document.getElementById('barterValue')||{}).value)||0;
   if(window.items && window.items.length > 0 && !window.items[0].desc){
@@ -4702,9 +4759,9 @@ function getAdsDuration(){
 }
 
 
-// ══ Edit T&C ══════════════════════════════════════════════════════
+// ══ แก้ไข T&C ══════════════════════════════════════════════════════
 function editTC(){
-  // รีเซ็ต T&C state
+  // Reset T&C state
   tcAccepted = false;
   var cb = document.getElementById('tcCheckbox');
   if(cb) cb.checked = false;
@@ -4776,7 +4833,7 @@ document.addEventListener('DOMContentLoaded', function(){
 </script>
 
 <div class="mob-nav" id="mobNav">
-  <button class="mob-nav-btn mob-nav-next" onclick="goToStep(2)">ถัดไป: Choose Template →</button>
+  <button class="mob-nav-btn mob-nav-next" onclick="goToStep(2)">Next: Choose Template →</button>
 </div>
 
 <!-- iOS PDF Viewer Overlay -->
@@ -4787,7 +4844,7 @@ document.addEventListener('DOMContentLoaded', function(){
     <button onclick="iosSharePdf()" style="background:#06c755;color:#fff;border:none;border-radius:8px;padding:8px 14px;font-size:13px;font-weight:700;cursor:pointer;font-family:Sarabun,sans-serif">📤 Share</button>
   </div>
   <div style="font-size:12px;color:#8e8e93;text-align:center;padding:8px 16px;background:#2c2c2e;flex-shrink:0">
-    กด <strong style="color:#fff">📤 Share</strong> แล้วเลือก <strong style="color:#fff">Line</strong> หรือ <strong style="color:#fff">บันทึกใน Files</strong>
+    กด <strong style="color:#fff">📤 Share</strong> แล้วSelect <strong style="color:#fff">Line</strong> or <strong style="color:#fff">Save to Files</strong>
   </div>
   <iframe id="iosPdfFrame" src="" style="flex:1;border:none;width:100%;background:#fff"></iframe>
 </div>
@@ -4796,7 +4853,7 @@ document.addEventListener('DOMContentLoaded', function(){
 <div id="cropModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:99997;flex-direction:column;align-items:center;justify-content:flex-start;overflow-y:auto">
   <!-- คำอธิบาย -->
   <div style="width:100%;max-width:500px;padding:12px 12px 6px">
-    <div style="font-size:.72rem;color:#fedf22;text-align:center;font-weight:700">✂️ ลากกรอบสีเหลืองให้พอดีบัตร</div>
+    <div style="font-size:.72rem;color:#fedf22;text-align:center;font-weight:700">✂️ Drag yellow frame to fit card</div>
   </div>
   <!-- รูป + กรอบ -->
   <div style="width:100%;max-width:500px;padding:0 12px;flex:1">
@@ -4813,7 +4870,7 @@ document.addEventListener('DOMContentLoaded', function(){
   <!-- ปุ่มด้านล่าง + padding พ้น nav bar Android -->
   <div style="width:100%;max-width:500px;display:flex;gap:8px;padding:12px 12px;padding-bottom:max(20px,env(safe-area-inset-bottom,20px));background:rgba(0,0,0,.95);position:sticky;bottom:0;margin-top:10px">
     <button onclick="cancelCrop()" style="flex:1;padding:13px;border:1.5px solid #666;border-radius:10px;background:transparent;font-family:Sarabun,sans-serif;font-size:.88rem;color:#fff;cursor:pointer">Cancel</button>
-    <button onclick="confirmCrop()" style="flex:2;padding:13px;border:none;border-radius:10px;background:#f73174;font-family:Sarabun,sans-serif;font-size:.88rem;font-weight:700;color:#fff;cursor:pointer">✅ ครอป & ใช้งาน</button>
+    <button onclick="confirmCrop()" style="flex:2;padding:13px;border:none;border-radius:10px;background:#f73174;font-family:Sarabun,sans-serif;font-size:.88rem;font-weight:700;color:#fff;cursor:pointer">✅ Crop & Use</button>
   </div>
 </div>
 
@@ -4821,7 +4878,7 @@ document.addEventListener('DOMContentLoaded', function(){
 <div id="certModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:99998;align-items:center;justify-content:center;padding:16px">
   <div style="background:#fff;border-radius:16px;width:100%;max-width:480px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.3)">
     <div style="background:#f73174;color:#fff;padding:12px 16px;font-size:.85rem;font-weight:700;display:flex;align-items:center;justify-content:space-between">
-      <span>✍️ เซ็นสำเนาถูกต้อง</span>
+      <span>✍️ Sign Certified Copy</span>
       <button onclick="closeCertModal()" style="background:none;border:none;color:#fff;font-size:1.2rem;cursor:pointer">✕</button>
     </div>
     <!-- Preview รูปพร้อม overlay -->
@@ -4829,11 +4886,11 @@ document.addEventListener('DOMContentLoaded', function(){
       <img id="certPreviewImg" style="max-width:100%;max-height:280px;display:block">
       <!-- Canvas สำหรับDraw Signature -->
       <canvas id="certCanvas" style="position:absolute;inset:0;width:100%;height:100%;cursor:crosshair;touch-action:none"></canvas>
-      <!-- ข้อความสำเนาถูกต้อง (overlay) -->
+      <!-- ข้อความCertified Copy (overlay) -->
       <div id="certStamp" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none;opacity:.8;width:90%">
-        <div style="font-size:.68rem;font-weight:700;color:#1a5fb4;text-shadow:0 0 3px rgba(255,255,255,.9)">*ใช้สำหรับรับชำระค่าจ้างในการรีวิวสินค้า จาก บริษัท คอนวี่ อินเตอร์เนชั่นแนล จำกัด เท่านั้น*</div>
-        <div style="font-size:.62rem;font-weight:700;color:#1a5fb4;text-shadow:0 0 3px rgba(255,255,255,.9);margin-bottom:4px">จาก บริษัท คอนวี่ อินเตอร์เนชั่นแนล จำกัด</div>
-        <div style="font-size:1.2rem;font-weight:900;color:#1a5fb4;letter-spacing:.05em;text-shadow:0 0 4px rgba(255,255,255,.9)">สำเนาถูกต้อง</div>
+        <div style="font-size:.68rem;font-weight:700;color:#1a5fb4;text-shadow:0 0 3px rgba(255,255,255,.9)">*For receiving payment from KONVY INTERNATIONAL COMPANY LIMITED เท่านั้น*</div>
+        <div style="font-size:.62rem;font-weight:700;color:#1a5fb4;text-shadow:0 0 3px rgba(255,255,255,.9);margin-bottom:4px">from KONVY INTERNATIONAL COMPANY LIMITED</div>
+        <div style="font-size:1.2rem;font-weight:900;color:#1a5fb4;letter-spacing:.05em;text-shadow:0 0 4px rgba(255,255,255,.9)">Certified Copy</div>
         <div id="certStampName" style="font-size:.75rem;font-weight:700;color:#1a5fb4;margin-top:2px"></div>
         <div id="certStampDate" style="font-size:.7rem;color:#1a5fb4"></div>
       </div>
@@ -4858,11 +4915,11 @@ document.addEventListener('DOMContentLoaded', function(){
       </div>
     </div>
     <div style="padding:4px 16px 6px;background:#f9f9f9;font-size:.68rem;color:#8a96a3;text-align:center">
-      Draw Signatureบนรูปโดยตรง หรือUpload Imageลายเซ็นค่ะ
+      Draw signature directly or upload a signature image
     </div>
     <div style="padding:12px 16px;display:flex;gap:8px">
       <button onclick="clearCertSig()" style="flex:1;padding:10px;border:1.5px solid #dde3ea;border-radius:8px;background:#fff;font-family:Sarabun,sans-serif;font-size:.82rem;color:#666;cursor:pointer">Clearลายเซ็น</button>
-      <button onclick="saveCertified()" style="flex:2;padding:10px;border:none;border-radius:8px;background:#f73174;font-family:Sarabun,sans-serif;font-size:.82rem;font-weight:700;color:#fff;cursor:pointer">✅ บันทึกสำเนาถูกต้อง</button>
+      <button onclick="saveCertified()" style="flex:2;padding:10px;border:none;border-radius:8px;background:#f73174;font-family:Sarabun,sans-serif;font-size:.82rem;font-weight:700;color:#fff;cursor:pointer">✅ Save Certified Copy</button>
     </div>
   </div>
 </div>
