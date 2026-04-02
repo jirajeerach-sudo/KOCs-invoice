@@ -1274,7 +1274,7 @@ body{font-family:'Sarabun',sans-serif;background:#eef2f7;color:#1a1a2e;min-heigh
               <select class="tc-input" id="tcCanModify" onchange="onTcFieldChange()">
                 <option value="ได้">✅ Allowed</option>
                 <option value="ไม่ได้">❌ Not Allowed</option>
-                <option value="ได้บางส่วน">⚠️ Partial</option>
+                <option value="ตามที่ตกลงกัน">✅ As Agreed</option>
               </select>
             </div>
             <div class="tc-field">
@@ -1362,7 +1362,7 @@ body{font-family:'Sarabun',sans-serif;background:#eef2f7;color:#1a1a2e;min-heigh
           <li>Withholding Tax (WHT): KONVY deducts <strong>3%</strong> for Thai individuals (13-digit ID) or <strong>5%</strong> for foreigners (Passport) and issues certificate within 30 days</li>
           <li>If contractor is <strong>VAT registered (7%)</strong>: no WHT; contractor must issue a VAT invoice to KONVY</li>
           <li>This agreement is governed by Thai law. Disputes shall be submitted to the Bangkok South Civil Court</li>
-          <li>KOL/KOC has the status of <strong>Independent Contractor</strong> independent contractor; no labor welfare entitlements</li>
+          
         </ul>
         <p style="font-size:.74rem;color:#8a96a3;margin-top:10px;border-top:1px solid #eee;padding-top:8px">
           Acceptance of these T&amp;C is legally equivalent to a signature under the Electronic Transactions Act B.E. 2544
@@ -1944,6 +1944,7 @@ function patchBilingual(el){
   h=h.replace(/คิดค่าใช้สิทธิ์เพิ่มเติม(?! \/)/g,"คิดค่าใช้สิทธิ์เพิ่มเติม / Paid Usage");
   h=h.replace(/ไม่อนุญาต(?! \/)/g,"ไม่อนุญาต / Not Permitted");
   h=h.replace(/ไม่จำกัด(?! \/)/g,"ไม่จำกัด / Unlimited");
+  h=h.replace(/ตามที่ตกลงกัน(?! \/)/g,"ตามที่ตกลงกัน / As Agreed");
   // Doc meta
   h=h.replace(/กำหนดโพสต์(?! \/)/g,"กำหนดโพสต์ / Post Date");
   h=h.replace(/กำหนดชำระ(?! \/)/g,"กำหนดชำระ / Due Date");
