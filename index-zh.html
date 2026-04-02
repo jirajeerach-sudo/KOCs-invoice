@@ -1274,7 +1274,7 @@ body{font-family:'Sarabun',sans-serif;background:#eef2f7;color:#1a1a2e;min-heigh
               <select class="tc-input" id="tcCanModify" onchange="onTcFieldChange()">
                 <option value="ได้">✅ 允许</option>
                 <option value="ไม่ได้">❌ 不允许</option>
-                <option value="ได้บางส่วน">⚠️ 部分允许</option>
+                <option value="ตามที่ตกลงกัน">✅ 按协议</option>
               </select>
             </div>
             <div class="tc-field">
@@ -1362,7 +1362,7 @@ body{font-family:'Sarabun',sans-serif;background:#eef2f7;color:#1a1a2e;min-heigh
           <li>代扣税(WHT)：KONVY扣除 <strong>3%</strong> 适用于泰国个人（13位身份证）或 <strong>5%</strong> 适用于外国人（护照），30天内出具证明</li>
           <li>若承包商已 <strong>注册增值税（7%）</strong>：不扣代扣税，须向KONVY开具增值税发票</li>
           <li>本协议受泰国法律管辖，争议提交曼谷南民事法院</li>
-          <li>KOL/KOC身份为 <strong>Independent Contractor</strong> 独立承包商，无劳动福利</li>
+          
         </ul>
         <p style="font-size:.74rem;color:#8a96a3;margin-top:10px;border-top:1px solid #eee;padding-top:8px">
           根据电子交易法，接受本条款具有与签名同等的法律效力
@@ -1944,6 +1944,7 @@ function patchBilingual(el){
   h=h.replace(/คิดค่าใช้สิทธิ์เพิ่มเติม(?! \/)/g,"คิดค่าใช้สิทธิ์เพิ่มเติม / 付费授权");
   h=h.replace(/ไม่อนุญาต(?! \/)/g,"ไม่อนุญาต / 不允许");
   h=h.replace(/ไม่จำกัด(?! \/)/g,"ไม่จำกัด / 不限期");
+  h=h.replace(/ตามที่ตกลงกัน(?! \/)/g,"ตามที่ตกลงกัน / 按协议");
   // Doc meta
   h=h.replace(/กำหนดโพสต์(?! \/)/g,"กำหนดโพสต์ / 发布日期");
   h=h.replace(/กำหนดชำระ(?! \/)/g,"กำหนดชำระ / 截止日期");
