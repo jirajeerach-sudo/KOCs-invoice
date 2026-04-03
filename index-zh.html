@@ -1131,10 +1131,6 @@ body{font-family:'Sarabun',sans-serif;background:#eef2f7;color:#1a1a2e;min-heigh
       <div style="font-size:.85rem;font-weight:700;color:#7a5c00;margin-bottom:6px">⚠️ เ关闭ผ่าน WeChat / DingTalk</div>
       <div style="font-size:.78rem;color:#7a5c00;line-height:1.6;margin-bottom:10px">此应用阻止文件下载，请在Safari或Chrome中打开此链接</div>
       <!-- URL box -->
-      <div style="display:flex;gap:6px;margin-bottom:10px;align-items:center">
-        <div id="lbwUrlBox" style="flex:1;background:#fff;border:1.5px solid #ffc107;border-radius:6px;padding:7px 10px;font-size:.72rem;color:#555;word-break:break-all;line-height:1.4">https://konvykols.github.io/invoice/</div>
-        <button onclick="lbwCopyUrl()" id="lbwCopyBtn" style="flex-shrink:0;background:#f0c040;color:#1a1a2e;border:none;border-radius:7px;padding:8px 12px;font-family:Sarabun,sans-serif;font-size:.78rem;font-weight:700;cursor:pointer;white-space:nowrap">📋 复制链接</button>
-      </div>
       <!-- QR Code -->
       <div style="text-align:center;margin-bottom:8px">
         <div style="font-size:.68rem;color:#9a7a30;margin-bottom:6px">或扫描QR码在浏览器中打开</div>
@@ -1150,13 +1146,6 @@ body{font-family:'Sarabun',sans-serif;background:#eef2f7;color:#1a1a2e;min-heigh
       ⬇️ 下载PDF
     </button>
     <!-- QT → INV link box (แสดงเฉพาะตอน quot) -->
-    <div class="qt-link-box" id="qtLinkBox">
-      <div class="qt-link-label">🔗 发票填写链接(发送给KOL保存)</div>
-      <div class="qt-link-url" id="qtLinkUrl">—</div>
-      <div class="qt-link-btns">
-        <button class="qt-link-copy" id="qtLinkCopyBtn" onclick="copyQtLink()">📋 复制链接</button>
-        <button class="qt-link-share" onclick="shareQtLink()">📤 分享链接</button>
-      </div>
     </div>
     <button class="done-btn"
       onclick="document.getElementById('doneScreen').classList.remove('show')"
@@ -1263,7 +1252,7 @@ body{font-family:'Sarabun',sans-serif;background:#eef2f7;color:#1a1a2e;min-heigh
 
         <!-- 不允许: แสดงข้อความสรุป -->
         <div id="tcNoneBox" style="display:none;margin-top:8px;background:#fff5f5;border:1.5px solid #fca5a5;border-radius:8px;padding:10px 14px;font-size:.8rem;color:#991b1b">
-          ❌ KOL/KOC <strong>不允许</strong>公司不得将素材用于任何商业用途
+          ❌ KOL/KOC <strong>不允许</strong>公司将素材用于任何商业用途 (2.1, 2.2)
         </div>
 
         <!-- อนุญาตฟรี: แสดง ดัดแปลง + ระยะเวลา -->
@@ -1274,12 +1263,11 @@ body{font-family:'Sarabun',sans-serif;background:#eef2f7;color:#1a1a2e;min-heigh
               <select class="tc-input" id="tcCanModify" onchange="onTcFieldChange()">
                 <option value="ได้">✅ 允许</option>
                 <option value="ไม่ได้">❌ 不允许</option>
-                <option value="ตามที่ตกลงกัน">✅ 按协议</option>
               </select>
             </div>
             <div class="tc-field">
               <label>素材使用期限</label>
-              <select class="tc-input" id="tcAssetDuration" onchange="onTcFieldChange()">
+              <select class="tc-input" id="tcAssetDuration" onchange="onAssetDurSelect();onTcFieldChange()">
                 <option value="不限期">不限期</option>
                 <option value="6个月">6个月</option>
                 <option value="1年">1年</option>
@@ -1287,6 +1275,11 @@ body{font-family:'Sarabun',sans-serif;background:#eef2f7;color:#1a1a2e;min-heigh
                 <option value="3年">3年</option>
                 <option value="按约定">按约定</option>
               </select>
+              <div id="assetDurCustomBox" style="display:none;margin-top:6px">
+                <input class="tc-input" id="tcAssetDurationCustom" type="text"
+                  placeholder="例如4个月或18个月"
+                  oninput="updateTcDetail21();onTcFieldChange()" style="width:100%">
+              </div>
             </div>
             <div class="tc-field" style="grid-column:1/-1">
               <label>广告投放期限</label>
@@ -1309,8 +1302,8 @@ body{font-family:'Sarabun',sans-serif;background:#eef2f7;color:#1a1a2e;min-heigh
           <!-- สรุปรายละเอียด -->
           <div class="tc-usage-detail show" id="tcUsageDetail" style="margin-top:8px">
             <ul>
-              <li><strong>2.1 作品版权：</strong> 允许公司转发、分享或合并使用素材 <span id="tcDetail21Fee" style="color:#2ecc71;font-weight:700">— 无额外费用</span></li>
-              <li style="margin-top:4px"><strong>2.3 Paid Ads & Whitelisting:</strong> 同意公司通过此素材投放广告 <span id="tcDetail23Fee" style="color:#2ecc71;font-weight:700"></span> <span id="tcDetail23Dur" style="color:#555;font-weight:600"></span></li>
+              <li><strong>2.1 作品版权：</strong> 允许公司转发、分享或合并使用素材 <span id="tcDetail21Fee" style="color:#2ecc71;font-weight:700">— 无额外费用</span><br><span style="font-size:.76rem;color:#444;margin-top:2px;display:inline-block"><strong>修改权限:</strong> <span id="tcDetail21Modify">允许</span> &nbsp;|&nbsp; <strong>使用期限:</strong> <span id="tcDetail21AssetDur">不限期</span></span></li>
+              <li style="margin-top:4px"><strong>2.2 Paid Ads & Whitelisting:</strong> 同意公司通过此素材投放广告 <span id="tcDetail23Fee" style="color:#2ecc71;font-weight:700"></span> <span id="tcDetail23Dur" style="color:#555;font-weight:600"></span></li>
             </ul>
           </div>
         </div>
@@ -1323,12 +1316,8 @@ body{font-family:'Sarabun',sans-serif;background:#eef2f7;color:#1a1a2e;min-heigh
               <label>2.1 版权/转发</label>
               <input type="text" class="tc-input" id="tcFee21" placeholder="例如5,000泰铢" oninput="onTcFieldChange()">
             </div>
-            <div class="tc-field">
-              <label>2.2 Likeness Rights</label>
-              <input type="text" class="tc-input" id="tcFee22" placeholder="例如3,000泰铢" oninput="onTcFieldChange()">
-            </div>
             <div class="tc-field" style="grid-column:1/-1">
-              <label>2.3 Paid Ads & Whitelisting</label>
+              <label>2.2 Paid Ads & Whitelisting</label>
               <input type="text" class="tc-input" id="tcFee23" placeholder="例如8,000泰铢" oninput="onTcFieldChange()">
             </div>
           </div>
@@ -1396,7 +1385,6 @@ body{font-family:'Sarabun',sans-serif;background:#eef2f7;color:#1a1a2e;min-heigh
         <div class="tc-accepted-badge" id="tcBadge" style="margin-right:4px">
           <span>✅</span><span style="font-size:.68rem">已同意条款</span>
         </div>
-        <button class="btn-act" id="btnGetLink" onclick="getQtLink()" style="display:none;background:rgba(74,144,217,.15);color:#4a90d9;border:1.5px solid #4a90d9;font-size:.75rem;padding:6px 12px">🔗 获取发票链接</button>
         <button class="btn-act" id="btnEditTC" onclick="editTC()" style="display:none;background:rgba(247,49,116,.12);color:#f73174;border:1.5px solid #f73174;font-size:.75rem;padding:6px 12px">📋 แก้ไข T&C</button>
         <button class="btn-act" id="btnNextToTemplate" onclick="openTC()" style="background:#4a90d9;color:#fff">下一步: 预览 →</button>
       </div>
@@ -2060,7 +2048,7 @@ function renderInvoice(){
     var assetType   = (typeof tcUsageType!=='undefined') ? tcUsageType : 'free';
     var assetLabel  = assetType==='paid' ? 'คิดค่าใช้สิทธิ์เพิ่มเติม' : assetType==='none' ? '不允许' : 'อนุญาตให้ใช้ฟรี';
     var canModify   = (document.getElementById('tcCanModify')||{}).value||'ได้';
-    var assetDur    = (document.getElementById('tcAssetDuration')||{}).value||'不限期';
+    var assetDur    = typeof getAssetDuration==='function' ? getAssetDuration() : ((document.getElementById('tcAssetDuration')||{}).value||'不限期');
     var adsDur      = typeof getAdsDuration==='function' ? getAdsDuration() : ((document.getElementById('tcAdsDuration')||{}).value||'1年');
     var fee21       = (document.getElementById('tcFee21')||{}).value||'–';
     var fee22       = (document.getElementById('tcFee22')||{}).value||'–';
@@ -2071,7 +2059,7 @@ function renderInvoice(){
       '<div style="font-weight:700;color:#1a1a2e;font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px;border-bottom:1px solid #e8ecf0;padding-bottom:6px">ข้อตกลงการใช้ทรัพย์สิน (Usage Rights)</div>'+
       '<div><span style="color:#666;min-width:160px;display:inline-block">发布日期:</span> <strong>'+pubDateFmt+(pubTimeVal?' เวลา '+pubTimeVal:'')+(pubPlatVal?' — '+pubPlatVal:'')+'</strong></div>'+
       '<div><span style="color:#666;min-width:160px;display:inline-block">สิทธิ์การใช้ Asset:</span> <strong>'+assetLabel+'</strong></div>'+
-      (assetType==='paid'?'<div style="padding-left:16px"><span style="color:#666;min-width:144px;display:inline-block">2.1 กรรมสิทธิ์ / Repost:</span> <strong>'+fee21+'</strong></div><div style="padding-left:16px"><span style="color:#666;min-width:144px;display:inline-block">2.2 Likeness Rights:</span> <strong>'+fee22+'</strong></div><div style="padding-left:16px"><span style="color:#666;min-width:144px;display:inline-block">2.3 Paid Ads:</span> <strong>'+fee23+'</strong></div>':'')+
+      (assetType==='paid'?'<div style="padding-left:16px"><span style="color:#666;min-width:144px;display:inline-block">2.1 กรรมสิทธิ์ / Repost:</span> <strong>'+fee21+'</strong></div><div style="padding-left:16px"><span style="color:#666;min-width:144px;display:inline-block">2.2 Paid Ads:</span> <strong>'+fee23+'</strong></div>':'')+
       '<div><span style="color:#666;min-width:160px;display:inline-block">สิทธิ์ดัดแปลง Asset:</span> <strong>'+(assetType==='none'?'不允许':canModify)+'</strong></div>'+
       '<div><span style="color:#666;min-width:160px;display:inline-block">素材使用期限:</span> <strong>'+(assetType==='none'?'不允许':assetDur)+'</strong></div>'+
       '<div><span style="color:#666;min-width:160px;display:inline-block">ระยะเวลายิงโฆษณา (Paid Ads):</span> <strong>'+(assetType==='none'?'不允许':adsDur)+'</strong></div>'+
@@ -4023,39 +4011,6 @@ function handleOtherSelect(selId, inputId){
   calcTotal(); renderInvoice();
 })();
 // ── LINE/WeChat/DingTalk browser warning helpers ──
-function lbwCopyUrl(){
-  var url='https://konvykols.github.io/invoice/';
-  var btn=document.getElementById('lbwCopyBtn');
-  if(navigator.clipboard){
-    navigator.clipboard.writeText(url).then(function(){
-      if(btn){ var orig=btn.textContent; btn.textContent='✅'; setTimeout(function(){btn.textContent=orig;},1500); }
-    });
-  } else {
-    var ta=document.createElement('textarea'); ta.value=url;
-    ta.style.cssText='position:fixed;opacity:0;top:0;left:0';
-    document.body.appendChild(ta); ta.select(); document.execCommand('copy');
-    document.body.removeChild(ta);
-    if(btn){ var orig2=btn.textContent; btn.textContent='✅'; setTimeout(function(){btn.textContent=orig2;},1500); }
-  }
-}
-function lbwDrawQR(){
-  var canvas=document.getElementById('lbwQrCanvas');
-  if(!canvas) return;
-  var ctx=canvas.getContext('2d');
-  var url='https://konvykols.github.io/invoice/';
-  // Simple QR via Google Charts API rendered into img
-  var img=new Image();
-  img.crossOrigin='anonymous';
-  img.onload=function(){ ctx.drawImage(img,0,0,120,120); };
-  img.onerror=function(){
-    // Fallback: draw URL as text
-    ctx.fillStyle='#fff'; ctx.fillRect(0,0,120,120);
-    ctx.fillStyle='#333'; ctx.font='7px monospace'; ctx.textAlign='center';
-    var words=url.replace('https://','').split('/');
-    words.forEach(function(w,i){ ctx.fillText(w,60,20+i*14); });
-  };
-  img.src='https://api.qrserver.com/v1/create-qr-code/?size=120x120&data='+encodeURIComponent(url);
-}
 
 function randomTemplate(){
   var idx=Math.floor(Math.random()*TPLS.length);
@@ -4179,17 +4134,46 @@ function setUsageType(type){
   onTcFieldChange();
 }
 
+
+
+function onAssetDurSelect(){
+  var sel = document.getElementById('tcAssetDuration');
+  var box = document.getElementById('assetDurCustomBox');
+  if(!sel || !box) return;
+  box.style.display = sel.value === '按约定' ? 'block' : 'none';
+  updateTcDetail21();
+}
+function getAssetDuration(){
+  var sel = document.getElementById('tcAssetDuration');
+  if(!sel) return '';
+  if(sel.value === '按约定'){
+    return (document.getElementById('tcAssetDurationCustom')||{}).value.trim() || '按约定';
+  }
+  return sel.value || '';
+}
+function updateTcDetail21(){
+  var modEl = document.getElementById('tcDetail21Modify');
+  var durEl = document.getElementById('tcDetail21AssetDur');
+  if(!modEl && !durEl) return;
+  var canMod = (document.getElementById('tcCanModify')||{}).value||'ได้';
+  var assetDurVal = typeof getAssetDuration==='function' ? getAssetDuration() : ((document.getElementById('tcAssetDuration')||{}).value||'');
+  var _modMap = {
+      'ได้': '✅ 允许',
+      'ไม่ได้': '❌ 不允许'
+    };
+  if(modEl) modEl.textContent = _modMap[canMod] || canMod;
+  if(durEl) durEl.textContent = assetDurVal || '不限期';
+}
+
 function updateFeeLabels(){
   var f21 = (document.getElementById('tcFee21')||{}).value||'';
-  var f22 = (document.getElementById('tcFee22')||{}).value||'';
   var f23 = (document.getElementById('tcFee23')||{}).value||'';
   var el21 = document.getElementById('tcDetail21Fee');
-  var el22 = document.getElementById('tcDetail22Fee');
   var el23 = document.getElementById('tcDetail23Fee');
   if(el21) el21.textContent = f21 ? '(ค่าใช้สิทธิ์: '+f21+')' : '';
-  if(el22) el22.textContent = f22 ? '(ค่าใช้สิทธิ์: '+f22+')' : '';
   if(el23) el23.textContent = f23 ? '('+f23+')' : '';
   updateAdsDurLabel();
+  updateTcDetail21();
 }
 
 function updateAdsDurLabel(){
@@ -4215,6 +4199,7 @@ function onTcFieldChange(){
   // update fee labels realtime
   if(tcUsageType === 'paid') updateFeeLabels();
   if(typeof updateAdsDurLabel === 'function') updateAdsDurLabel();
+  if(typeof updateTcDetail21 === 'function') updateTcDetail21();
 
   var pubDate = (document.getElementById('quotPostDate')||{}).value||'';
   var cb  = document.getElementById('tcCheckbox');
@@ -4264,8 +4249,6 @@ document.addEventListener('DOMContentLoaded', function(){
   // โหลดข้อมูลจาก URL ถ้ามี
   loadFromUrl();
   // แสดงปุ่ม "获取发票链接" เฉพาะ quot
-  var glBtn = document.getElementById('btnGetLink');
-  if(glBtn) glBtn.style.display = currentDocType==='quot' ? 'inline-flex' : 'none';
 });
 
 
@@ -4275,8 +4258,6 @@ function setDocType(type){
   var btnI = document.getElementById('btnDocInv');
   if(btnQ) btnQ.classList.toggle('active', type==='quot');
   if(btnI) btnI.classList.toggle('active', type==='inv');
-  var glBtn = document.getElementById('btnGetLink');
-  if(glBtn) glBtn.style.display = type==='quot' ? 'inline-flex' : 'none';
   // อัปเดต label เลขที่เอกสาร
   var lbl = document.getElementById('invNoLabel');
   if(lbl) lbl.textContent = type==='quot' ? '报价单编号' : '发票编号';
@@ -4348,7 +4329,7 @@ function collectFormData(){
     // T&C
     tcUsage:    typeof tcUsageType!=='undefined' ? tcUsageType : 'free',
     tcCanMod:   (document.getElementById('tcCanModify')||{}).value||'ได้',
-    tcAssetDur: (document.getElementById('tcAssetDuration')||{}).value||'不限期',
+    tcAssetDur: typeof getAssetDuration==='function' ? getAssetDuration() : ((document.getElementById('tcAssetDuration')||{}).value||'不限期'),
     tcAdsDur:   typeof getAdsDuration==='function' ? getAdsDuration() : ((document.getElementById('tcAdsDuration')||{}).value||'1年'),
     tcFee21:    (document.getElementById('tcFee21')||{}).value||'',
     tcFee23:    (document.getElementById('tcFee23')||{}).value||'',
@@ -4364,60 +4345,8 @@ function collectFormData(){
   return data;
 }
 
-function buildQtLink(switchToInv){
-  var data = collectFormData();
-  // ถ้าสร้าง INV link → เปลี่ยน dtype
-  if(switchToInv) data.dtype = 'inv';
-  // เปลี่ยน QT- → INV-
-  if(switchToInv && data.invNo) data.invNo = data.invNo.replace(/^QT-/i,'INV-');
-  var json = JSON.stringify(data);
-  try {
-    var b64 = btoa(unescape(encodeURIComponent(json)));
-    var base = window.location.href.split('?')[0].split('#')[0];
-    return base + '?d=' + b64;
-  } catch(e) {
-    console.error('buildQtLink encode error:', e);
-    return window.location.href.split('?')[0];
-  }
-}
 
-function getQtLink(){
-  var url = buildQtLink(true); // true = switch to INV
-  if(navigator.clipboard){
-    navigator.clipboard.writeText(url).catch(function(){});
-  } else {
-    // fallback copy
-    var ta = document.createElement('textarea');
-    ta.value = url; ta.style.position='fixed'; ta.style.opacity='0';
-    document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove();
-  }
-  var btn = document.getElementById('btnGetLink');
-  if(btn){ btn.textContent = '✅ 已复制！'; setTimeout(function(){ btn.textContent = '🔗 获取发票链接'; }, 2500); }
-}
 
-function copyQtLink(){
-  var url = document.getElementById('qtLinkUrl').textContent;
-  if(navigator.clipboard){ navigator.clipboard.writeText(url); }
-  var btn = document.getElementById('qtLinkCopyBtn');
-  if(btn){ btn.textContent = '✅ 已复制！'; btn.classList.add('copied');
-    setTimeout(function(){ btn.textContent = '📋 复制链接'; btn.classList.remove('copied'); }, 2500); }
-}
-
-function shareQtLink(){
-  var url = document.getElementById('qtLinkUrl').textContent;
-  if(navigator.share){ navigator.share({ title: 'Link กรอก发票 KONVY', url: url }); }
-  else { copyQtLink(); }
-}
-
-function showQtLinkInDone(){
-  var box = document.getElementById('qtLinkBox');
-  var urlEl = document.getElementById('qtLinkUrl');
-  if(!box || !urlEl) return;
-  if(currentDocType !== 'quot'){ box.classList.remove('show'); return; }
-  var url = buildQtLink(true);
-  urlEl.textContent = url;
-  box.classList.add('show');
-}
 
 // ── โหลดข้อมูลจาก URL parameter ──────────────────────────────────
 function loadFromUrl(){
@@ -4540,20 +4469,6 @@ function loadFromUrl(){
   }
 }
 
-// hook showQtLinkInDone เข้า done screen
-(function(){
-  var _orig = window.savePDF;
-  // inject ใน doneScreen show
-  var _obs = new MutationObserver(function(muts){
-    muts.forEach(function(m){
-      if(m.target.classList && m.target.classList.contains('show')){
-        showQtLinkInDone();
-      }
-    });
-  });
-  var ds = document.getElementById('doneScreen');
-  if(ds) _obs.observe(ds, { attributes:true, attributeFilter:['class'] });
-})();
 
 
 // ══ Payment Type (QUOT only) ════════════════════════════════════════
@@ -4718,7 +4633,6 @@ function injectTcFeesToItems(){
   if(typeof tcUsageType === 'undefined' || (tcUsageType !== 'paid')) return;
 
   var fee21 = ((document.getElementById('tcFee21')||{}).value||'').trim();
-  var fee22 = ((document.getElementById('tcFee22')||{}).value||'').trim();
   var fee23 = ((document.getElementById('tcFee23')||{}).value||'').trim();
   var adsDur = getAdsDuration();
 
@@ -4732,10 +4646,8 @@ function injectTcFeesToItems(){
   var toAdd = [];
   if(fee21 && parseAmt(fee21) > 0)
     toAdd.push({ desc: 'ค่าสิทธิ์ใช้งาน Asset (Repost/Publish)', qty: 1, price: parseAmt(fee21) });
-  if(fee22 && parseAmt(fee22) > 0)
-    toAdd.push({ desc: 'ค่าสิทธิ์ภาพลักษณ์ (Likeness Rights)', qty: 1, price: parseAmt(fee22) });
   if(fee23 && parseAmt(fee23) > 0)
-    toAdd.push({ desc: 'ค่าสิทธิ์ยิงโฆษณา (Paid Ads' + (adsDur ? ' ' + adsDur : '') + ')', qty: 1, price: parseAmt(fee23) });
+    toAdd.push({ desc: 'ค่าสิทธิ์ยิงโฆษณา - Paid Ads' + (adsDur ? ' ' + adsDur : ''), qty: 1, price: parseAmt(fee23) });
 
   if(toAdd.length === 0) return;
 
